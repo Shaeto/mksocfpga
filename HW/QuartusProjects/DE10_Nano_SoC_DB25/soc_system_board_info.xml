@@ -16,4 +16,6 @@ of the Linux kernel.  One typically executes sopc2dts as follows:
 	<val type="string">altr,socfpga-cyclone5</val>
 	<val type="string">altr,socfpga</val>
 </DTAppend>
+<alias name="serial0" value="/sopc@0/serial@xffc02000"/>
+<alias name="serial1" value="/sopc@0/serial@xffc03000"/>
 </BoardInfo>
