@@ -21,7 +21,7 @@
 // THE SOFTWARE.
 //
 
-module top 
+module DE10_Nano_SoC_DB25 
 #(
         parameter MEM_A_WIDTH,
         parameter MEM_D_WIDTH,
@@ -115,7 +115,6 @@ module top
    inout  wire [15:0] arduino_io,
    inout  wire        arduino_reset_n,
 
-`ifdef DE10_NANO
    // HDMI
    inout wire         hdmi_i2c_scl,
    inout wire         hdmi_i2c_sda,
@@ -129,14 +128,17 @@ module top
    input wire         hdmi_tx_int,
    output wire        hdmi_tx_vs,
    output wire [23:0] hdmi_tx_d,
-`endif
-
-    // GPIO
-      inout  wire [35:0] gpio_0,
-      inout  wire [35:0] gpio_1   
+   // GPIO
+   inout  wire [35:0] gpio_0,
+   inout  wire [35:0] gpio_1	
 );
 
 //REG/WIRE Declarations
+
+// DE10-Nano Dev kit and I/O adaptors specific info
+// import boardtype::*;
+parameter NumIOAddrReg = 6;
+
 wire        hps_fpga_reset_n;
 wire [27:0] stm_hw_events;
 
@@ -150,7 +152,6 @@ assign arduino_reset_n = hps_fpga_reset_n;
 
 assign fpga_led_pio = fpga_led_internal;
 
-`ifdef DE10_NANO
 // i2c connection
 wire hdmi_internal_scl_o_e;
 wire hdmi_internal_scl_o;
@@ -159,15 +160,17 @@ wire hdmi_internal_sda_o;
 
 ALT_IOBUF scl_iobuf (.i(1'b0), .oe(hdmi_internal_scl_o_e), .o(hdmi_internal_scl_o), .io(hdmi_i2c_scl));
 ALT_IOBUF sda_iobuf (.i(1'b0), .oe(hdmi_internal_sda_o_e), .o(hdmi_internal_sda_o), .io(hdmi_i2c_sda));
-`endif  
 
 // arduino i2c connection
 wire arduino_internal_scl_o_e;
 wire arduino_internal_scl_o;
 wire arduino_internal_sda_o_e;
 wire arduino_internal_sda_o;
+// arduino uart
 wire arduino_hps_0_uart1_rxd;
 wire arduino_hps_0_uart1_txd;
+
+// arduino spi
 wire arduino_hps_0_spim0_ss_0_n;
 wire arduino_hps_0_spim0_ssi_oe_n;
 wire arduino_hps_0_spim0_ss_in_n;
@@ -188,10 +191,41 @@ ALT_IOBUF arduino_mosi_iobuf (.i(arduino_hps_0_spim0_txd), .oe(1'b1), .o(), .io(
 ALT_IOBUF arduino_miso_iobuf (.i(1'b0), .oe(1'b0), .o(arduino_hps_0_spim0_rxd), .io(arduino_io[12]));
 ALT_IOBUF arduino_sck_iobuf (.i(arduino_hps_0_spim0_sclk_out_clk), .oe(1'b1), .o(), .io(arduino_io[13]));
 
+// hm2
+parameter AddrWidth = 16;
+parameter IOWidth   = 68;
+parameter LIOWidth  = 0;
+
+wire [AddrWidth-1:2]    hm_address;
+wire [31:0]             hm_datao;
+wire [31:0]             hm_datai;
+wire [31:0]             busdata_out;
+wire                    hm_read;
+wire                    hm_write;
+wire [3:0]              hm_chipsel;
+wire                    hm_clk_med;
+wire                    hm_clk_high;
+wire                    clklow_sig;
+wire                    clkmed_sig;
+wire                    clkhigh_sig;
+
+// Mesa I/O Signals:
+//wire [LEDCount-1:0]         hm2_leds_sig;
+//wire [IOWidth-1:0]          hm2_bitsout_sig;
+//wire [IOWidth-1:0]          hm2_bitsin_sig;
+
+//wire [MuxLedWidth-1:0]      io_leds_sig[NumGPIO-1:0];
+//wire [MuxGPIOIOWidth-1:0]   io_bitsout_sig[NumGPIO-1:0];
+//wire [MuxGPIOIOWidth-1:0]   io_bitsin_sig[NumGPIO-1:0];
+
+// export hm2 int signal to arduino int0 pin (d2)
+wire int_sig;
+assign arduino_io[2] = int_sig;
+
 // SoC sub-system module
 soc_system soc_inst (
   //Clocks & Resets
-  .clk_clk                               (fpga_clk1_50),
+  .clk_50_clk                               (fpga_clk1_50),
   .hps_0_h2f_reset_reset_n               (hps_fpga_reset_n),
   
   //DRAM
@@ -272,7 +306,6 @@ soc_system soc_inst (
   //STM
   .hps_0_f2h_stm_hw_events_stm_hwevents  (stm_hw_events),  
 
-`ifdef DE10_NANO
   //HDMI
   .clk_hdmi_clk                                      (hdmi_tx_clk),
   .alt_vip_cl_cvo_hdmi_clocked_video_vid_clk         (hdmi_tx_clk),
@@ -292,8 +325,6 @@ soc_system soc_inst (
   .hps_0_i2c2_sda        (hdmi_internal_sda_o),
   .hps_0_i2c2_clk_clk    (hdmi_internal_scl_o_e),
   .hps_0_i2c2_scl_in_clk (hdmi_internal_scl_o),
-
-`endif
 
   //Arduino
   .hps_0_spim0_txd          (arduino_hps_0_spim0_txd),
@@ -319,19 +350,32 @@ soc_system soc_inst (
   .hps_0_i2c3_clk_clk       (arduino_internal_scl_o_e),
   .hps_0_i2c3_out_data      (arduino_internal_sda_o_e),
   .hps_0_i2c3_sda           (arduino_internal_sda_o),
-  .arduino_gpio_export      (arduino_io[9:2]),
-
-  //Header GPIOs
-  .gpio_0_a_export          (gpio_0[17:0]),
-  .gpio_0_b_export          (gpio_0[35:18]),
-  .gpio_1_a_export          (gpio_1[17:0]),
-  .gpio_1_b_export          (gpio_1[35:18]),
+  .arduino_gpio_export      (arduino_io[9:3]),
   
   //PIOs
   .button_pio_export        (fpga_debounced_buttons),
   .dipsw_pio_export         (fpga_dipsw_pio),
-  .led_pio_export           (fpga_led_internal)
-);  
+  .led_pio_export           (fpga_led_internal),
+
+  // hm2reg_io_0_conduit
+  .mk_io_hm2_datain         (busdata_out),                 //           .hm2_datain
+  .mk_io_hm2_dataout        (hm_datai),                    //           .hm2reg.hm2_dataout
+  .mk_io_hm2_address        (hm_address),                  //           .hm2_address
+  .mk_io_hm2_write          (hm_write),                    //           .hm2_write
+  .mk_io_hm2_read           (hm_read),                     //           .hm2_read
+  .mk_io_hm2_chipsel        (hm_chipsel),                  //           .hm2_chipsel
+  .mk_io_hm2_int_in         (int_sig),                     //           .hm2_int_in
+  
+  // high & med clocks for hm2
+  .clk_100mhz_out_clk       (hm_clk_med),                  //           .clk_100mhz_out.clk
+  .clk_200mhz_out_clk       (hm_clk_high),                 //           .clk_100mhz_out.clk
+  
+  // ADC
+  .adc_io_convst            (adc_convst),
+  .adc_io_sck               (adc_sck),
+  .adc_io_sdi               (adc_sdi),
+  .adc_io_sdo               (adc_sdo)
+);
 
 
 // Debounce logic to clean out glitches within 1ms
@@ -345,5 +389,112 @@ debounce debounce_inst (
   defparam debounce_inst.POLARITY = "LOW";
   defparam debounce_inst.TIMEOUT = 50000;               // at 50Mhz this is a debounce time of 1ms
   defparam debounce_inst.TIMEOUT_WIDTH = 16;            // ceil(log2(TIMEOUT))
+
+// Mesa code ------------------------------------------------------//
+
+assign clklow_sig = fpga_clk1_50;
+assign clkhigh_sig = hm_clk_high;
+assign clkmed_sig = hm_clk_med;
+
+//
+HostMot2_cfg HostMot2_inst
+(
+  .ibus(hm_datai) ,	      // input [buswidth-1:0] ibus_sig
+  .obus(hm_datao) ,	      // output [buswidth-1:0] obus_sig
+  .addr(hm_address) ,	   // input [addrwidth-1:2] addr_sig	-- addr => A(AddrWidth-1 downto 2),
+  .readstb(hm_read ) ,	   // input  readstb_sig
+  .writestb(hm_write) ,	   // input  writestb_sig
+
+  .clklow(clklow_sig) ,	   // input  clklow_sig  				-- PCI clock --> all
+  .clkmed(clkmed_sig) ,	   // input  clkmed_sig  				-- Processor clock --> sserialwa, twiddle
+  .clkhigh(clkhigh_sig) ,	// input  clkhigh_sig				-- High speed clock --> most
+  .irq(int_sig) ,	         // output  int_sig							--int => LINT, ---> PCI ?
+
+  // GPIO_0           // DB25-P2
+  .iobits({
+         gpio_0[16],  // PIN 1
+         gpio_0[17],  // PIN 14
+         gpio_0[14],  // PIN 2
+         gpio_0[15],  // PIN 15
+         gpio_0[12],  // PIN 3
+         gpio_0[13],  // PIN 16
+         gpio_0[10],  // PIN 4
+         gpio_0[11],  // PIN 17
+         gpio_0[08],  // PIN 5
+         gpio_0[09],  // PIN 6
+         gpio_0[06],  // PIN 7
+         gpio_0[07],  // PIN 8
+         gpio_0[04],  // PIN 9
+         gpio_0[05],  // PIN 10
+         gpio_0[02],  // PIN 11
+         gpio_0[03],  // PIN 12
+         gpio_0[00],  // PIN 13
+
+  // GPIO_0           // DB25-P3
+         gpio_0[34],  // PIN 1
+         gpio_0[35],  // PIN 14
+         gpio_0[32],  // PIN 2
+         gpio_0[33],  // PIN 15
+         gpio_0[30],  // PIN 3
+         gpio_0[31],  // PIN 16
+         gpio_0[28],  // PIN 4
+         gpio_0[29],  // PIN 17
+         gpio_0[26],  // PIN 5
+         gpio_0[27],  // PIN 6
+         gpio_0[24],  // PIN 7
+         gpio_0[25],  // PIN 8
+         gpio_0[22],  // PIN 9
+         gpio_0[23],  // PIN 10
+         gpio_0[20],  // PIN 11
+         gpio_0[21],  // PIN 12
+         gpio_0[18],  // PIN 13
+
+  // GPIO_1           // DB25-P2
+         gpio_1[16],  // PIN 1
+         gpio_1[17],  // PIN 14
+         gpio_1[14],  // PIN 2
+         gpio_1[15],  // PIN 15
+         gpio_1[12],  // PIN 3
+         gpio_1[13],  // PIN 16
+         gpio_1[10],  // PIN 4
+         gpio_1[11],  // PIN 17
+         gpio_1[08],  // PIN 5
+         gpio_1[09],  // PIN 6
+         gpio_1[06],  // PIN 7
+         gpio_1[07],  // PIN 8
+         gpio_1[04],  // PIN 9
+         gpio_1[05],  // PIN 10
+         gpio_1[02],  // PIN 11
+         gpio_1[03],  // PIN 12
+         gpio_1[00],  // PIN 13
+
+  // GPIO_1           // DB25-P3
+         gpio_1[34],  // PIN 1
+         gpio_1[35],  // PIN 14
+         gpio_1[32],  // PIN 2
+         gpio_1[33],  // PIN 15
+         gpio_1[30],  // PIN 3
+         gpio_1[31],  // PIN 16
+         gpio_1[28],  // PIN 4
+         gpio_1[29],  // PIN 17
+         gpio_1[26],  // PIN 5
+         gpio_1[27],  // PIN 6
+         gpio_1[24],  // PIN 7
+         gpio_1[25],  // PIN 8
+         gpio_1[22],  // PIN 9
+         gpio_1[23],  // PIN 10
+         gpio_1[20],  // PIN 11
+         gpio_1[21],  // PIN 12
+         gpio_1[18]   // PIN 13
+	}),
+
+  .leds({
+         gpio_0[1],
+         gpio_0[19],
+         gpio_1[1],
+         gpio_1[19]
+	})
+//  .leds(hm2_leds_sig) 	// output [ledcount-1:0] leds_sig		--leds => LEDS
+);
 
 endmodule

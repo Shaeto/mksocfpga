@@ -13,7 +13,7 @@ module adc_ltc2308_fifo(
     input   slave_read_n,
     input   slave_wrtie_n,
     output  reg [15:0] slave_readdata,
-    input   reg [15:0] slave_writedata,
+    input   [15:0] slave_writedata,
 
     input   adc_clk, // max 40mhz
 	// adc interface

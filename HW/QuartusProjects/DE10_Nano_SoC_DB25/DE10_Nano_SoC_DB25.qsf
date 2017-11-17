@@ -43,8 +43,26 @@ set_global_assignment -name TOP_LEVEL_ENTITY DE10_Nano_SoC_DB25
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 16.1.2
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:02:14  MARCH 21, 2017"
 set_global_assignment -name LAST_QUARTUS_VERSION "17.1.0 Standard Edition"
-set_global_assignment -name VERILOG_FILE DE10_Nano_SoC_DB25.sv
+set_global_assignment -name IP_SEARCH_PATHS "../../cv-ip/**/*;./ip;../../cv-ip/ADC_LTC2308_FIFO;../../cv-ip/hm2reg_io;../../ip"
+set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
+set_global_assignment -name SYSTEMVERILOG_FILE DE10_Nano_SoC_DB25.sv
+
+# set_global_assignment -name SDC_FILE DE10_Nano_SoC_DB25.sdc
 set_global_assignment -name VERILOG_FILE ip/debounce/debounce.v
+#============================================================
+# Firmware ID ROM
+set_global_assignment -name VHDL_FILE ../Common/firmware_id.vhd
+set_global_assignment -name MIF_FILE firmware_id.mif
+
+# common MESA Hostmot 2 Sources:
+set_global_assignment -name QIP_FILE ../../hm2/hm2_socfpga.qip
+
+# MESA board , pin and daughter card config options:
+set_global_assignment -name QIP_FILE ../../hm2/config/DE10_Nano_SoC_DB25/hm2_DE10_Nano_SoC_DB25.qip
+
+# Configured HostMot2 instance
+set_global_assignment -name VHDL_FILE hostmot2_cfg.vhd
+#============================================================
 set_global_assignment -name VERILOG_MACRO "DE10_NANO=1"
 set_global_assignment -name EDA_SIMULATION_TOOL "<None>"
 set_global_assignment -name EDA_OUTPUT_DATA_FORMAT NONE -section_id eda_simulation
@@ -720,3 +738,11 @@ set_global_assignment -name USE_DLL_FREQUENCY_FOR_DQS_DELAY_CHAIN ON
 set_global_assignment -name UNIPHY_SEQUENCER_DQS_CONFIG_ENABLE ON
 set_global_assignment -name OPTIMIZE_MULTI_CORNER_TIMING ON
 set_global_assignment -name ECO_REGENERATE_REPORT ON
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP "-40"
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 100
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
