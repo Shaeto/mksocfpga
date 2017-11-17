@@ -372,9 +372,9 @@
 }
 ]]></parameter>
  <parameter name="clockCrossingAdapter" value="HANDSHAKE" />
- <parameter name="device" value="5CSXFC6C6U23I7" />
+ <parameter name="device" value="5CSEBA6U23I7" />
  <parameter name="deviceFamily" value="Cyclone V" />
- <parameter name="deviceSpeedGrade" value="7_H6" />
+ <parameter name="deviceSpeedGrade" value="7" />
  <parameter name="fabricMode" value="QSYS" />
  <parameter name="generateLegacySim" value="false" />
  <parameter name="generationId" value="0" />
@@ -488,9 +488,9 @@
   <parameter name="ACCEPT_SYNC" value="0" />
   <parameter name="ANC_LINE" value="0" />
   <parameter name="AP_LINE" value="0" />
-  <parameter name="AUTO_DEVICE" value="5CSXFC6C6U23I7" />
+  <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7_H6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <parameter name="BPS" value="8" />
   <parameter name="CLOCKS_ARE_SAME" value="0" />
   <parameter name="COLOUR_PLANES_ARE_IN_PARALLEL" value="1" />
@@ -535,8 +535,8 @@
    kind="alt_vip_cl_vfb"
    version="17.1"
    enabled="1">
-  <parameter name="AUTO_DEVICE" value="5CSXFC6C6U23I7" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7_H6" />
+  <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <parameter name="BITS_PER_SYMBOL" value="8" />
   <parameter name="BURST_ALIGNMENT" value="1" />
   <parameter name="CLOCKS_ARE_SEPARATE" value="1" />
@@ -716,7 +716,7 @@
   <parameter name="ALTMEMPHY_COMPATIBLE_MODE" value="false" />
   <parameter name="AP_MODE" value="false" />
   <parameter name="AP_MODE_EN" value="0" />
-  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7_H6" />
+  <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
   <parameter name="AUTO_PD_CYCLES" value="0" />
   <parameter name="AUTO_POWERDN_EN" value="false" />
   <parameter name="AVL_DATA_WIDTH_PORT" value="32,32,32,32,32,32" />
@@ -1180,7 +1180,7 @@
   <parameter name="desired_sdmmc_clk_mhz" value="200.0" />
   <parameter name="desired_spi_m_clk_mhz" value="200.0" />
   <parameter name="desired_usb_mp_clk_mhz" value="200.0" />
-  <parameter name="device_name" value="5CSXFC6C6U23I7" />
+  <parameter name="device_name" value="5CSEBA6U23I7" />
   <parameter name="device_pll_info_manual">{320000000 1600000000} {320000000 1000000000} {800000000 400000000 400000000}</parameter>
   <parameter name="eosc1_clk_mhz" value="25.0" />
   <parameter name="eosc2_clk_mhz" value="25.0" />
@@ -1228,7 +1228,7 @@
   <parameter name="show_warning_as_error_msg" value="false" />
   <parameter name="spi_m_clk_div" value="0" />
   <parameter name="usb_mp_clk_div" value="0" />
-  <parameter name="use_default_mpu_clk" value="false" />
+  <parameter name="use_default_mpu_clk" value="true" />
  </module>
  <module
    name="hps_reset"
@@ -1334,7 +1334,7 @@
  <module name="pll_stream" kind="altera_pll" version="17.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
-  <parameter name="device" value="5CSXFC6C6U23I7" />
+  <parameter name="device" value="5CSEBA6U23I7" />
   <parameter name="device_family" value="Cyclone V" />
   <parameter name="gui_active_clk" value="false" />
   <parameter name="gui_actual_output_clock_frequency0" value="0 MHz" />
