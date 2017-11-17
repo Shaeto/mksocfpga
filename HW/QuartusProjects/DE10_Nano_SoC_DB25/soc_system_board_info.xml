@@ -18,4 +18,8 @@ of the Linux kernel.  One typically executes sopc2dts as follows:
 </DTAppend>
 <alias name="serial0" value="/sopc@0/serial@xffc02000"/>
 <alias name="serial1" value="/sopc@0/serial@xffc03000"/>
+<alias name="timer0" value="/sopc@0/timer@xffc08000"/>
+<alias name="timer1" value="/sopc@0/timer@xffc09000"/>
+<alias name="timer2" value="/sopc@0/timer@0xffd00000"/>
+<alias name="timer3" value="/sopc@0/timer@0xffd01000"/>
 </BoardInfo>
