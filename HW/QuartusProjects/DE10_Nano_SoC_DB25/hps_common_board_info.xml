@@ -286,6 +286,8 @@ these aliases allows seamless support of multiple emacs
 
 <DTAppend name="phys" type="phandle" parentlabel="hps_0_usb1" val="usbphy0" />
 
+<DTAppend name="ranges" parentlabel="sopc0" />
+
 <Chosen>
         <Bootargs val="earlyprintk console=ttyS0,115200"></Bootargs>
 </Chosen>
