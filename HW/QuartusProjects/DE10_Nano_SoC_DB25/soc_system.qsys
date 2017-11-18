@@ -503,11 +503,11 @@
   <parameter name="FIELD0_V_FRONT_PORCH" value="0" />
   <parameter name="FIELD0_V_RISING_EDGE" value="0" />
   <parameter name="FIELD0_V_SYNC_LENGTH" value="0" />
-  <parameter name="FIFO_DEPTH" value="1920" />
+  <parameter name="FIFO_DEPTH" value="1024" />
   <parameter name="F_FALLING_EDGE" value="0" />
   <parameter name="F_RISING_EDGE" value="0" />
   <parameter name="GENERATE_SYNC" value="0" />
-  <parameter name="H_ACTIVE_PIXELS" value="1920" />
+  <parameter name="H_ACTIVE_PIXELS" value="1024" />
   <parameter name="H_BACK_PORCH" value="64" />
   <parameter name="H_BLANK" value="0" />
   <parameter name="H_FRONT_PORCH" value="32" />
@@ -521,10 +521,10 @@
   <parameter name="SRC_WIDTH" value="8" />
   <parameter name="STD_WIDTH" value="1" />
   <parameter name="TASK_WIDTH" value="8" />
-  <parameter name="THRESHOLD" value="1919" />
+  <parameter name="THRESHOLD" value="1023" />
   <parameter name="USE_CONTROL" value="1" />
   <parameter name="USE_EMBEDDED_SYNCS" value="0" />
-  <parameter name="V_ACTIVE_LINES" value="1080" />
+  <parameter name="V_ACTIVE_LINES" value="768" />
   <parameter name="V_BACK_PORCH" value="27" />
   <parameter name="V_BLANK" value="0" />
   <parameter name="V_FRONT_PORCH" value="1" />
@@ -552,9 +552,9 @@
   <parameter name="IS_SYNC_MASTER" value="0" />
   <parameter name="IS_SYNC_SLAVE" value="0" />
   <parameter name="LINE_BASED_BUFFERING" value="0" />
-  <parameter name="MAX_HEIGHT" value="1080" />
+  <parameter name="MAX_HEIGHT" value="768" />
   <parameter name="MAX_SYMBOLS_PER_PACKET" value="10" />
-  <parameter name="MAX_WIDTH" value="1920" />
+  <parameter name="MAX_WIDTH" value="1024" />
   <parameter name="MEM_BASE_ADDR" value="0" />
   <parameter name="MEM_BUFFER_OFFSET" value="16777216" />
   <parameter name="MEM_PORT_WIDTH" value="256" />
