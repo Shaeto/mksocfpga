@@ -35,6 +35,11 @@
    }
    element alt_vip_cl_cvo_hdmi.control
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "4096";
@@ -51,6 +56,11 @@
    }
    element alt_vip_cl_vfb_hdmi.control
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "0";
@@ -77,7 +87,7 @@
    {
       datum baseAddress
       {
-         value = "24576";
+         value = "0";
          type = "String";
       }
    }
@@ -93,7 +103,7 @@
    {
       datum baseAddress
       {
-         value = "20480";
+         value = "32";
          type = "String";
       }
    }
@@ -109,7 +119,7 @@
    {
       datum baseAddress
       {
-         value = "28672";
+         value = "80";
          type = "String";
       }
    }
@@ -155,6 +165,11 @@
    }
    element cvo_reset_pio.s1
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "49152";
@@ -173,7 +188,7 @@
    {
       datum baseAddress
       {
-         value = "16384";
+         value = "48";
          type = "String";
       }
    }
@@ -187,6 +202,11 @@
    }
    element hdmi_mm_bridge.s0
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "32768";
@@ -245,7 +265,7 @@
    {
       datum baseAddress
       {
-         value = "8192";
+         value = "88";
          type = "String";
       }
    }
@@ -261,7 +281,7 @@
    {
       datum baseAddress
       {
-         value = "12288";
+         value = "64";
          type = "String";
       }
    }
@@ -275,6 +295,11 @@
    }
    element locked_pio.s1
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "53248";
@@ -315,6 +340,11 @@
    }
    element pll_reset_pio.s1
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "45056";
@@ -339,6 +369,11 @@
    }
    element pll_stream_reconfig.mgmt_avalon_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "40960";
@@ -363,6 +398,11 @@
    }
    element sysid_qsys.control_slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
          value = "4096";
@@ -683,7 +723,7 @@
    version="17.1"
    enabled="1">
   <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
-  <parameter name="ADDRESS_WIDTH" value="10" />
+  <parameter name="ADDRESS_WIDTH" value="16" />
   <parameter name="DATA_WIDTH" value="32" />
   <parameter name="LINEWRAPBURSTS" value="0" />
   <parameter name="MAX_BURST_SIZE" value="1" />
@@ -1294,7 +1334,7 @@
    version="17.1"
    enabled="1">
   <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
-  <parameter name="ADDRESS_WIDTH" value="10" />
+  <parameter name="ADDRESS_WIDTH" value="15" />
   <parameter name="DATA_WIDTH" value="32" />
   <parameter name="LINEWRAPBURSTS" value="0" />
   <parameter name="MAX_BURST_SIZE" value="1" />
@@ -1587,7 +1627,7 @@
    start="lw_mm_bridge.m0"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x2000" />
+  <parameter name="baseAddress" value="0x0058" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1632,7 +1672,7 @@
    start="lw_mm_bridge.m0"
    end="chip_id_read_mm_0.s0">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x7000" />
+  <parameter name="baseAddress" value="0x0050" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1646,7 +1686,7 @@
  </connection>
  <connection kind="avalon" version="17.1" start="lw_mm_bridge.m0" end="led_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x3000" />
+  <parameter name="baseAddress" value="0x0040" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1655,7 +1695,7 @@
    start="lw_mm_bridge.m0"
    end="dipsw_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x4000" />
+  <parameter name="baseAddress" value="0x0030" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1664,7 +1704,7 @@
    start="lw_mm_bridge.m0"
    end="button_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x5000" />
+  <parameter name="baseAddress" value="0x0020" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1700,7 +1740,7 @@
    start="lw_mm_bridge.m0"
    end="arduino_gpio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x6000" />
+  <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
