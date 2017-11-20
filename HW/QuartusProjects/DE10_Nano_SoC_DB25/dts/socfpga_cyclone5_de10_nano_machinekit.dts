@@ -1,0 +1,126 @@
+/*
+ * Copyright (C) 2017, Intel Corporation
+ *
+ * based on socfpga_cyclone5_de10_nano_soc.dts
+ *
+ * SPDX-License-Identifier:	GPL-2.0+
+ */
+
+#include "socfpga_cyclone5.dtsi"
+
+/ {
+	model = "Terasic DE10-Nano";
+	compatible = "altr,socfpga-cyclone5", "altr,socfpga";
+
+	chosen {
+		bootargs = "console=ttyS0,115200";
+	};
+
+	aliases {
+		ethernet0 = &gmac1;
+		udc0 = &usb1;
+		display0 = &framebuffer;
+	};
+
+	memory {
+		name = "memory";
+		device_type = "memory";
+		reg = <0x0 0x40000000>; /* 1GB */
+	};
+	
+	soc {
+		hps_0_bridges: bridge@c0000000 {
+		    compatible = "altr,bridge-17.1", "simple-bus";
+		    reg = <0xc0000000 0x20000000>, <0xff200000 0x00200000>;
+		    reg-names = "axi_h2f", "axi_h2f_lw";
+		    #address-cells = <2>;
+		    #size-cells = <1>;
+		    
+		    ranges = 	<0x00000001 0x00001000 0xff201000 0x00000008>,
+				<0x00000001 0x00010000 0xff210000 0x00010000>,
+				<0x00000001 0x00020000 0xff220000 0x00000008>,
+				<0x00000001 0x00008000 0xff208000 0x00000040>;
+
+		    sysid_qsys: sysid@100001000 {
+			compatible = "altr,sysid-17.1", "altr,sysid-1.0";
+			reg = <0x00000001 0x00001000 0x00000008>;
+			id = <2899645442>;
+			timestamp = <1510983860>;
+		    };
+
+		    hm2reg_io_0: hm2-socfpga@100010000 {
+			compatible = "machkt,hm2reg-io-1.0";
+			reg = <0x00000001 0x00010000 0x00010000>;
+			interrupt-parent = <&intc>;
+			interrupts = <0 43 4>;
+			address_width = <14>;
+			data_width = <32>;
+		    };
+
+		    adc_ltc2308_fifo_0: adc-ltc2308@100020000 {
+			compatible = "holotc,adc-io-1.1";
+			reg = <0x00000001 0x00020000 0x00000008>;
+			address_width = <3>;
+			data_width = <16>;
+		    };
+		
+		    framebuffer: vip@100008000 {
+                            compatible = "altr,vip-17.1", "altr,vip-frame-buffer-2.0";
+                            reg = <0x00000001 0x00008000 0x00000040>;
+                            interrupt-parent = <&intc>;
+                            interrupts = <0 50 4>;
+                            altr,bits-per-symbol = <8>;
+                            altr,max-height = <768>;
+                            altr,max-width = <1024>;
+                            altr,mem-port-width = <256>;
+                    };
+		};
+	};
+};
+
+&gmac1 {
+	status = "okay";
+	phy-mode = "rgmii";
+
+	rxd0-skew-ps = <420>;
+	rxd1-skew-ps = <420>;
+	rxd2-skew-ps = <420>;
+	rxd3-skew-ps = <420>;
+	txen-skew-ps = <0>;
+	txc-skew-ps = <1860>;
+	rxdv-skew-ps = <420>;
+	rxc-skew-ps = <1680>;
+};
+
+&gpio0 {
+	status = "disabled";
+};
+
+&gpio1 {
+	status = "disabled";
+};
+
+&gpio2 {
+	status = "disabled";
+};
+
+&mmc0 {
+	status = "okay";
+};
+
+&usb1 {
+	status = "okay";
+};
+
+&i2c0 {
+	status = "okay";
+	clock-frequency = <100000>;
+
+	adxl345: adxl345@0 {
+		compatible = "adi,adxl345";
+		reg = <0x53>;
+
+		interrupt-parent = <&portc>;
+		interrupts = <3 2>;
+	};
+};
