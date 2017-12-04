@@ -29,6 +29,14 @@
 	};
 	
 	soc {
+		clkmgr@ffd04000 {
+			clocks {
+				osc1 {
+					clock-frequency = <50000000>;
+				};
+			};
+		};
+
 		hps_0_bridges: bridge@c0000000 {
 		    compatible = "altr,bridge-17.1", "simple-bus";
 		    reg = <0xc0000000 0x20000000>, <0xff200000 0x00200000>;
@@ -48,11 +56,12 @@
 			timestamp = <1510983860>;
 		    };
 
-		    hm2reg_io_0: hm2-socfpga@100010000 {
-			compatible = "machkt,hm2reg-io-1.0";
+		    hm2reg_io_0: hm2-socfpga0@100010000 {
+			compatible = "generic-uio,ui_pdrv";
 			reg = <0x00000001 0x00010000 0x00010000>;
 			interrupt-parent = <&intc>;
 			interrupts = <0 43 4>;
+			clocks = <&osc1>;
 			address_width = <14>;
 			data_width = <32>;
 		    };
@@ -65,15 +74,15 @@
 		    };
 		
 		    framebuffer: vip@100008000 {
-                            compatible = "altr,vip-17.1", "altr,vip-frame-buffer-2.0";
-                            reg = <0x00000001 0x00008000 0x00000040>;
-                            interrupt-parent = <&intc>;
-                            interrupts = <0 50 4>;
-                            altr,bits-per-symbol = <8>;
-                            altr,max-height = <768>;
-                            altr,max-width = <1024>;
-                            altr,mem-port-width = <256>;
-                    };
+			compatible = "altr,vip-17.1", "altr,vip-frame-buffer-2.0";
+			reg = <0x00000001 0x00008000 0x00000040>;
+			//interrupt-parent = <&intc>;
+			//interrupts = <0 50 4>;
+			altr,bits-per-symbol = <8>;
+			altr,max-height = <768>;
+			altr,max-width = <1024>;
+			altr,mem-port-width = <256>;
+		    };
 		};
 	};
 };
