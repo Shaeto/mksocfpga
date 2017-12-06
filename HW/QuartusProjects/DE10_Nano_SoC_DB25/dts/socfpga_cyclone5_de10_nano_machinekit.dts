@@ -13,7 +13,7 @@
 	compatible = "altr,socfpga-cyclone5", "altr,socfpga";
 
 	chosen {
-		bootargs = "console=ttyS0,115200";
+		bootargs = "console=ttyS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio";
 	};
 
 	aliases {
@@ -57,7 +57,7 @@
 		    };
 
 		    hm2reg_io_0: hm2-socfpga0@100010000 {
-			compatible = "generic-uio,ui_pdrv";
+			compatible = "generic-uio";
 			reg = <0x00000001 0x00010000 0x00010000>;
 			interrupt-parent = <&intc>;
 			interrupts = <0 43 4>;
