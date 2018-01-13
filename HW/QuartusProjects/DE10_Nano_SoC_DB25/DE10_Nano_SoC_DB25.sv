@@ -199,10 +199,9 @@ parameter LIOWidth  = 0;
 wire [AddrWidth-1:2]    hm_address;
 wire [31:0]             hm_datao;
 wire [31:0]             hm_datai;
-wire [31:0]             busdata_out;
 wire                    hm_read;
 wire                    hm_write;
-wire [3:0]              hm_chipsel;
+//wire [3:0]              hm_chipsel;
 wire                    hm_clk_med;
 wire                    hm_clk_high;
 wire                    clklow_sig;
@@ -358,12 +357,12 @@ soc_system soc_inst (
   .led_pio_export           (fpga_led_internal),
 
   // hm2reg_io_0_conduit
-  .mk_io_hm2_datain         (busdata_out),                 //           .hm2_datain
+  .mk_io_hm2_datain         (hm_datao),                 //           .hm2_datain
   .mk_io_hm2_dataout        (hm_datai),                    //           .hm2reg.hm2_dataout
   .mk_io_hm2_address        (hm_address),                  //           .hm2_address
   .mk_io_hm2_write          (hm_write),                    //           .hm2_write
   .mk_io_hm2_read           (hm_read),                     //           .hm2_read
-  .mk_io_hm2_chipsel        (hm_chipsel),                  //           .hm2_chipsel
+//  .mk_io_hm2_chipsel        (hm_chipsel),                  //           .hm2_chipsel
   .mk_io_hm2_int_in         (int_sig),                     //           .hm2_int_in
   
   // high & med clocks for hm2
