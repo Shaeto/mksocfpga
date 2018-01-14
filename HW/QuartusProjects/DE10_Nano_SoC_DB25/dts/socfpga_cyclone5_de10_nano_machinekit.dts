@@ -43,41 +43,41 @@
 		    reg-names = "axi_h2f", "axi_h2f_lw";
 		    #address-cells = <2>;
 		    #size-cells = <1>;
-		    
-		    ranges = 	<0x00000001 0x00001000 0xff201000 0x00000008>,
-				<0x00000001 0x00010000 0xff210000 0x00010000>,
-				<0x00000001 0x00020000 0xff220000 0x00000008>,
-				<0x00000001 0x00008000 0xff208000 0x00000040>;
+		
+		    ranges =	<0x00000001 0x00010500 0xff210500 0x00000040>,
+				<0x00000001 0x00010570 0xff210570 0x00000008>,
+				<0x00000001 0x00010578 0xff210578 0x00000008>,
+				<0x00000001 0x00000000 0xff200000 0x00010000>;
 
-		    sysid_qsys: sysid@100001000 {
+		    sysid_qsys: sysid@100010578 {
 			compatible = "altr,sysid-17.1", "altr,sysid-1.0";
-			reg = <0x00000001 0x00001000 0x00000008>;
+			reg = <0x00000001 0x00010578 0x00000008>;
 			id = <2899645442>;
-			timestamp = <1510983860>;
+			timestamp = <1515961589>;
 		    };
 
-		    hm2reg_io_0: hm2-socfpga0@100010000 {
+		    hm2reg_io_0: hm2-socfpga0@100000000 {
 			compatible = "generic-uio";
-			reg = <0x00000001 0x00010000 0x00010000>;
+			reg = <0x00000001 0x00000000 0x00010000>;
 			interrupt-parent = <&intc>;
-			interrupts = <0 43 4>;
+			interrupts = <0 44 4>;
 			clocks = <&osc1>;
 			address_width = <14>;
 			data_width = <32>;
 		    };
 
-		    adc_ltc2308_fifo_0: adc-ltc2308@100020000 {
+		    adc_ltc2308_fifo_0: adc-ltc2308@100010570 {
 			compatible = "holotc,adc-io-1.1";
-			reg = <0x00000001 0x00020000 0x00000008>;
+			reg = <0x00000001 0x00010570 0x00000008>;
 			address_width = <3>;
 			data_width = <16>;
 		    };
 		
-		    framebuffer: vip@100008000 {
+		    framebuffer: vip@100010500 {
 			compatible = "altr,vip-17.1", "altr,vip-frame-buffer-2.0";
-			reg = <0x00000001 0x00008000 0x00000040>;
-			//interrupt-parent = <&intc>;
-			//interrupts = <0 50 4>;
+			reg = <0x00000001 0x00010500 0x00000040>;
+			interrupt-parent = <&intc>;
+			interrupts = <0 40 4>;
 			altr,bits-per-symbol = <8>;
 			altr,max-height = <768>;
 			altr,max-width = <1024>;
