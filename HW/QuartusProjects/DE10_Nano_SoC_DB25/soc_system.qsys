@@ -9,35 +9,24 @@
    categories="System" />
  <parameter name="bonusData"><![CDATA[bonusData 
 {
-   element ILC
-   {
-      datum _sortIndex
-      {
-         value = "15";
-         type = "int";
-      }
-   }
-   element ILC.avalon_slave
-   {
-      datum baseAddress
-      {
-         value = "66560";
-         type = "String";
-      }
-   }
    element adc_ltc2308_fifo_0
    {
       datum _sortIndex
       {
-         value = "7";
+         value = "9";
          type = "int";
       }
    }
    element adc_ltc2308_fifo_0.slave
    {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
       datum baseAddress
       {
-         value = "66928";
+         value = "336";
          type = "String";
       }
    }
@@ -45,7 +34,7 @@
    {
       datum _sortIndex
       {
-         value = "14";
+         value = "26";
          type = "int";
       }
    }
@@ -53,12 +42,12 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
       {
-         value = "65536";
+         value = "36864";
          type = "String";
       }
    }
@@ -66,7 +55,7 @@
    {
       datum _sortIndex
       {
-         value = "13";
+         value = "25";
          type = "int";
       }
    }
@@ -74,12 +63,12 @@
    {
       datum _lockedAddress
       {
-         value = "0";
+         value = "1";
          type = "boolean";
       }
       datum baseAddress
       {
-         value = "66816";
+         value = "32768";
          type = "String";
       }
    }
@@ -87,7 +76,7 @@
    {
       datum _sortIndex
       {
-         value = "11";
+         value = "13";
          type = "int";
       }
    }
@@ -95,7 +84,7 @@
    {
       datum baseAddress
       {
-         value = "66880";
+         value = "288";
          type = "String";
       }
    }
@@ -107,11 +96,64 @@
          type = "int";
       }
    }
+   element clk_hdmi
+   {
+      datum _sortIndex
+      {
+         value = "22";
+         type = "int";
+      }
+   }
+   element clock_100mhz
+   {
+      datum _sortIndex
+      {
+         value = "6";
+         type = "int";
+      }
+   }
+   element cvo_reset_conduit
+   {
+      datum _sortIndex
+      {
+         value = "17";
+         type = "int";
+      }
+   }
+   element cvo_reset_controller
+   {
+      datum _sortIndex
+      {
+         value = "16";
+         type = "int";
+      }
+   }
+   element cvo_reset_pio
+   {
+      datum _sortIndex
+      {
+         value = "18";
+         type = "int";
+      }
+   }
+   element cvo_reset_pio.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "49152";
+         type = "String";
+      }
+   }
    element dipsw_pio
    {
       datum _sortIndex
       {
-         value = "10";
+         value = "12";
          type = "int";
       }
    }
@@ -119,7 +161,7 @@
    {
       datum baseAddress
       {
-         value = "66896";
+         value = "304";
          type = "String";
       }
    }
@@ -143,15 +185,20 @@
    {
       datum _sortIndex
       {
-         value = "17";
+         value = "27";
          type = "int";
       }
    }
    element hm2reg_io_0.slave
    {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
       datum baseAddress
       {
-         value = "0";
+         value = "65536";
          type = "String";
       }
    }
@@ -192,27 +239,11 @@
          type = "int";
       }
    }
-   element intr_capturer_0
-   {
-      datum _sortIndex
-      {
-         value = "16";
-         type = "int";
-      }
-   }
-   element intr_capturer_0.avalon_slave_0
-   {
-      datum baseAddress
-      {
-         value = "66944";
-         type = "String";
-      }
-   }
    element jtag_uart
    {
       datum _sortIndex
       {
-         value = "6";
+         value = "8";
          type = "int";
       }
    }
@@ -220,7 +251,7 @@
    {
       datum baseAddress
       {
-         value = "66952";
+         value = "360";
          type = "String";
       }
    }
@@ -228,7 +259,7 @@
    {
       datum _sortIndex
       {
-         value = "9";
+         value = "11";
          type = "int";
       }
    }
@@ -236,7 +267,28 @@
    {
       datum baseAddress
       {
-         value = "66912";
+         value = "320";
+         type = "String";
+      }
+   }
+   element locked_pio
+   {
+      datum _sortIndex
+      {
+         value = "21";
+         type = "int";
+      }
+   }
+   element locked_pio.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "53248";
          type = "String";
       }
    }
@@ -244,7 +296,7 @@
    {
       datum _sortIndex
       {
-         value = "5";
+         value = "7";
          type = "int";
       }
    }
@@ -256,19 +308,119 @@
          type = "String";
       }
    }
-   element pll_stream
+   element pll_adc_hm2
    {
       datum _sortIndex
       {
-         value = "12";
+         value = "5";
          type = "int";
+      }
+   }
+   element pll_reset_conduit
+   {
+      datum _sortIndex
+      {
+         value = "19";
+         type = "int";
+      }
+   }
+   element pll_reset_pio
+   {
+      datum _sortIndex
+      {
+         value = "20";
+         type = "int";
+      }
+   }
+   element pll_reset_pio.s1
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "45056";
+         type = "String";
+      }
+   }
+   element pll_vip
+   {
+      datum _sortIndex
+      {
+         value = "23";
+         type = "int";
+      }
+   }
+   element pll_vip_reconfig
+   {
+      datum _sortIndex
+      {
+         value = "24";
+         type = "int";
+      }
+   }
+   element pll_vip_reconfig.mgmt_avalon_slave
+   {
+      datum _lockedAddress
+      {
+         value = "1";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "40960";
+         type = "String";
+      }
+   }
+   element psu_button
+   {
+      datum _sortIndex
+      {
+         value = "14";
+         type = "int";
+      }
+   }
+   element psu_button.s1
+   {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "272";
+         type = "String";
+      }
+   }
+   element psu_poweroff_req
+   {
+      datum _sortIndex
+      {
+         value = "15";
+         type = "int";
+      }
+   }
+   element psu_poweroff_req.s1
+   {
+      datum _lockedAddress
+      {
+         value = "0";
+         type = "boolean";
+      }
+      datum baseAddress
+      {
+         value = "256";
+         type = "String";
       }
    }
    element sysid_qsys
    {
       datum _sortIndex
       {
-         value = "8";
+         value = "10";
          type = "int";
       }
    }
@@ -281,7 +433,7 @@
       }
       datum baseAddress
       {
-         value = "66936";
+         value = "344";
          type = "String";
       }
    }
@@ -323,25 +475,27 @@
    dir="end" />
  <interface
    name="clk_100mhz_out"
-   internal="hps_0.h2f_user0_clock"
+   internal="clock_100mhz.out_clk"
    type="clock"
    dir="start" />
  <interface
    name="clk_200mhz_out"
-   internal="hps_0.h2f_user2_clock"
+   internal="pll_adc_hm2.outclk2"
    type="clock"
    dir="start" />
  <interface name="clk_50" internal="clk_50.clk_in" type="clock" dir="end" />
+ <interface
+   name="clk_audio"
+   internal="pll_adc_hm2.outclk3"
+   type="clock"
+   dir="start" />
+ <interface name="clk_hdmi" internal="clk_hdmi.out_clk" type="clock" dir="start" />
  <interface
    name="dipsw_pio"
    internal="dipsw_pio.external_connection"
    type="conduit"
    dir="end" />
- <interface
-   name="hdmi_clk"
-   internal="pll_stream.outclk1"
-   type="clock"
-   dir="start" />
+ <interface name="hdmi_clk" internal="pll_vip.outclk1" />
  <interface
    name="hps_0_f2h_cold_reset_req"
    internal="hps_0.f2h_cold_reset_req"
@@ -405,20 +559,16 @@
  <interface name="memory" internal="hps_0.memory" type="conduit" dir="end" />
  <interface name="mk_io" internal="hm2reg_io_0.pins" type="conduit" dir="end" />
  <interface
-   name="pll_stream_locked"
-   internal="pll_stream.locked"
+   name="psu_button"
+   internal="psu_button.external_connection"
+   type="conduit"
+   dir="end" />
+ <interface
+   name="psu_poweroff_req"
+   internal="psu_poweroff_req.external_connection"
    type="conduit"
    dir="end" />
  <interface name="reset" internal="clk_50.clk_in_reset" type="reset" dir="end" />
- <module
-   name="ILC"
-   kind="interrupt_latency_counter"
-   version="17.1"
-   enabled="1">
-  <parameter name="CLOCK_RATE" value="50000000" />
-  <parameter name="INTR_TYPE" value="0" />
-  <parameter name="IRQ_PORT_CNT" value="32" />
- </module>
  <module
    name="adc_ltc2308_fifo_0"
    kind="adc_ltc2308_fifo"
@@ -537,6 +687,75 @@
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
+ </module>
+ <module name="clk_hdmi" kind="altera_clock_bridge" version="17.1" enabled="1">
+  <parameter name="DERIVED_CLOCK_RATE" value="148500000" />
+  <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
+  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
+ <module
+   name="clock_100mhz"
+   kind="altera_clock_bridge"
+   version="17.1"
+   enabled="1">
+  <parameter name="DERIVED_CLOCK_RATE" value="100000000" />
+  <parameter name="EXPLICIT_CLOCK_RATE" value="100000000" />
+  <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
+ </module>
+ <module
+   name="cvo_reset_conduit"
+   kind="conduit_to_reset"
+   version="1.0"
+   enabled="1">
+  <parameter name="INPUT_CONDUIT_ROLE" value="export" />
+ </module>
+ <module
+   name="cvo_reset_controller"
+   kind="altera_reset_controller"
+   version="17.1"
+   enabled="1">
+  <parameter name="MIN_RST_ASSERTION_TIME" value="3" />
+  <parameter name="NUM_RESET_INPUTS" value="2" />
+  <parameter name="OUTPUT_RESET_SYNC_EDGES" value="deassert" />
+  <parameter name="RESET_REQUEST_PRESENT" value="0" />
+  <parameter name="RESET_REQ_EARLY_DSRT_TIME" value="1" />
+  <parameter name="RESET_REQ_WAIT_TIME" value="1" />
+  <parameter name="SYNC_DEPTH" value="2" />
+  <parameter name="USE_RESET_REQUEST_IN0" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN1" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN10" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN11" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN12" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN13" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN14" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN15" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN2" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN3" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN4" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN5" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN6" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN7" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN8" value="0" />
+  <parameter name="USE_RESET_REQUEST_IN9" value="0" />
+  <parameter name="USE_RESET_REQUEST_INPUT" value="0" />
+ </module>
+ <module
+   name="cvo_reset_pio"
+   kind="altera_avalon_pio"
+   version="17.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="true" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
  </module>
  <module name="dipsw_pio" kind="altera_avalon_pio" version="17.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="true" />
@@ -682,7 +901,7 @@
   <parameter name="EXPORT_AFI_HALF_CLK" value="false" />
   <parameter name="EXTRA_SETTINGS" value="" />
   <parameter name="F2H_AXI_CLOCK_FREQ" value="50000000" />
-  <parameter name="F2H_SDRAM0_CLOCK_FREQ" value="50000000" />
+  <parameter name="F2H_SDRAM0_CLOCK_FREQ" value="100000000" />
   <parameter name="F2H_SDRAM1_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM2_CLOCK_FREQ" value="100" />
   <parameter name="F2H_SDRAM3_CLOCK_FREQ" value="100" />
@@ -934,8 +1153,8 @@
   <parameter name="S2FCLK_PENDINGRST_Enable" value="false" />
   <parameter name="S2FCLK_USER0CLK_Enable" value="true" />
   <parameter name="S2FCLK_USER1CLK_Enable" value="true" />
-  <parameter name="S2FCLK_USER1CLK_FREQ" value="40.0" />
-  <parameter name="S2FCLK_USER2CLK" value="3" />
+  <parameter name="S2FCLK_USER1CLK_FREQ" value="50.0" />
+  <parameter name="S2FCLK_USER2CLK" value="5" />
   <parameter name="S2FCLK_USER2CLK_Enable" value="true" />
   <parameter name="S2FCLK_USER2CLK_FREQ" value="100.0" />
   <parameter name="S2FINTERRUPT_CAN_Enable" value="false" />
@@ -1130,14 +1349,6 @@
   <parameter name="USE_PLI" value="0" />
  </module>
  <module
-   name="intr_capturer_0"
-   kind="intr_capturer"
-   version="100.99.98.97"
-   enabled="1">
-  <parameter name="AUTO_INTERRUPT_RECEIVER_INTERRUPTS_USED" value="31" />
-  <parameter name="NUM_INTR" value="32" />
- </module>
- <module
    name="jtag_uart"
    kind="altera_avalon_jtag_uart"
    version="17.1"
@@ -1170,6 +1381,20 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="7" />
  </module>
+ <module name="locked_pio" kind="altera_avalon_pio" version="17.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="true" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
  <module
    name="lw_mm_bridge"
    kind="altera_avalon_mm_bridge"
@@ -1184,11 +1409,239 @@
   <parameter name="PIPELINE_COMMAND" value="1" />
   <parameter name="PIPELINE_RESPONSE" value="1" />
   <parameter name="SYMBOL_WIDTH" value="8" />
-  <parameter name="SYSINFO_ADDR_WIDTH" value="17" />
+  <parameter name="SYSINFO_ADDR_WIDTH" value="16" />
   <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
   <parameter name="USE_RESPONSE" value="0" />
  </module>
- <module name="pll_stream" kind="altera_pll" version="17.1" enabled="1">
+ <module name="pll_adc_hm2" kind="altera_pll" version="17.1" enabled="1">
+  <parameter name="debug_print_output" value="false" />
+  <parameter name="debug_use_rbc_taf_method" value="false" />
+  <parameter name="device" value="5CSEBA6U23I7" />
+  <parameter name="device_family" value="Cyclone V" />
+  <parameter name="gui_active_clk" value="false" />
+  <parameter name="gui_actual_output_clock_frequency0" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency1" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency10" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency11" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency12" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency13" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency14" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency15" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency16" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency17" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency2" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency3" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency4" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency5" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency6" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency7" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency8" value="0 MHz" />
+  <parameter name="gui_actual_output_clock_frequency9" value="0 MHz" />
+  <parameter name="gui_actual_phase_shift0" value="0" />
+  <parameter name="gui_actual_phase_shift1" value="0" />
+  <parameter name="gui_actual_phase_shift10" value="0" />
+  <parameter name="gui_actual_phase_shift11" value="0" />
+  <parameter name="gui_actual_phase_shift12" value="0" />
+  <parameter name="gui_actual_phase_shift13" value="0" />
+  <parameter name="gui_actual_phase_shift14" value="0" />
+  <parameter name="gui_actual_phase_shift15" value="0" />
+  <parameter name="gui_actual_phase_shift16" value="0" />
+  <parameter name="gui_actual_phase_shift17" value="0" />
+  <parameter name="gui_actual_phase_shift2" value="0" />
+  <parameter name="gui_actual_phase_shift3" value="0" />
+  <parameter name="gui_actual_phase_shift4" value="0" />
+  <parameter name="gui_actual_phase_shift5" value="0" />
+  <parameter name="gui_actual_phase_shift6" value="0" />
+  <parameter name="gui_actual_phase_shift7" value="0" />
+  <parameter name="gui_actual_phase_shift8" value="0" />
+  <parameter name="gui_actual_phase_shift9" value="0" />
+  <parameter name="gui_cascade_counter0" value="false" />
+  <parameter name="gui_cascade_counter1" value="false" />
+  <parameter name="gui_cascade_counter10" value="false" />
+  <parameter name="gui_cascade_counter11" value="false" />
+  <parameter name="gui_cascade_counter12" value="false" />
+  <parameter name="gui_cascade_counter13" value="false" />
+  <parameter name="gui_cascade_counter14" value="false" />
+  <parameter name="gui_cascade_counter15" value="false" />
+  <parameter name="gui_cascade_counter16" value="false" />
+  <parameter name="gui_cascade_counter17" value="false" />
+  <parameter name="gui_cascade_counter2" value="false" />
+  <parameter name="gui_cascade_counter3" value="false" />
+  <parameter name="gui_cascade_counter4" value="false" />
+  <parameter name="gui_cascade_counter5" value="false" />
+  <parameter name="gui_cascade_counter6" value="false" />
+  <parameter name="gui_cascade_counter7" value="false" />
+  <parameter name="gui_cascade_counter8" value="false" />
+  <parameter name="gui_cascade_counter9" value="false" />
+  <parameter name="gui_cascade_outclk_index" value="0" />
+  <parameter name="gui_channel_spacing" value="0.0" />
+  <parameter name="gui_clk_bad" value="false" />
+  <parameter name="gui_device_speed_grade" value="1" />
+  <parameter name="gui_divide_factor_c0" value="1" />
+  <parameter name="gui_divide_factor_c1" value="1" />
+  <parameter name="gui_divide_factor_c10" value="1" />
+  <parameter name="gui_divide_factor_c11" value="1" />
+  <parameter name="gui_divide_factor_c12" value="1" />
+  <parameter name="gui_divide_factor_c13" value="1" />
+  <parameter name="gui_divide_factor_c14" value="1" />
+  <parameter name="gui_divide_factor_c15" value="1" />
+  <parameter name="gui_divide_factor_c16" value="1" />
+  <parameter name="gui_divide_factor_c17" value="1" />
+  <parameter name="gui_divide_factor_c2" value="1" />
+  <parameter name="gui_divide_factor_c3" value="1" />
+  <parameter name="gui_divide_factor_c4" value="1" />
+  <parameter name="gui_divide_factor_c5" value="1" />
+  <parameter name="gui_divide_factor_c6" value="1" />
+  <parameter name="gui_divide_factor_c7" value="1" />
+  <parameter name="gui_divide_factor_c8" value="1" />
+  <parameter name="gui_divide_factor_c9" value="1" />
+  <parameter name="gui_divide_factor_n" value="1" />
+  <parameter name="gui_dps_cntr" value="C0" />
+  <parameter name="gui_dps_dir" value="Positive" />
+  <parameter name="gui_dps_num" value="1" />
+  <parameter name="gui_dsm_out_sel" value="1st_order" />
+  <parameter name="gui_duty_cycle0" value="50" />
+  <parameter name="gui_duty_cycle1" value="50" />
+  <parameter name="gui_duty_cycle10" value="50" />
+  <parameter name="gui_duty_cycle11" value="50" />
+  <parameter name="gui_duty_cycle12" value="50" />
+  <parameter name="gui_duty_cycle13" value="50" />
+  <parameter name="gui_duty_cycle14" value="50" />
+  <parameter name="gui_duty_cycle15" value="50" />
+  <parameter name="gui_duty_cycle16" value="50" />
+  <parameter name="gui_duty_cycle17" value="50" />
+  <parameter name="gui_duty_cycle2" value="50" />
+  <parameter name="gui_duty_cycle3" value="50" />
+  <parameter name="gui_duty_cycle4" value="50" />
+  <parameter name="gui_duty_cycle5" value="50" />
+  <parameter name="gui_duty_cycle6" value="50" />
+  <parameter name="gui_duty_cycle7" value="50" />
+  <parameter name="gui_duty_cycle8" value="50" />
+  <parameter name="gui_duty_cycle9" value="50" />
+  <parameter name="gui_en_adv_params" value="false" />
+  <parameter name="gui_en_dps_ports" value="false" />
+  <parameter name="gui_en_phout_ports" value="false" />
+  <parameter name="gui_en_reconf" value="false" />
+  <parameter name="gui_enable_cascade_in" value="false" />
+  <parameter name="gui_enable_cascade_out" value="false" />
+  <parameter name="gui_enable_mif_dps" value="false" />
+  <parameter name="gui_feedback_clock" value="Global Clock" />
+  <parameter name="gui_frac_multiply_factor" value="1" />
+  <parameter name="gui_fractional_cout" value="32" />
+  <parameter name="gui_mif_generate" value="false" />
+  <parameter name="gui_multiply_factor" value="1" />
+  <parameter name="gui_number_of_clocks" value="4" />
+  <parameter name="gui_operation_mode" value="direct" />
+  <parameter name="gui_output_clock_frequency0" value="40.0" />
+  <parameter name="gui_output_clock_frequency1" value="100.0" />
+  <parameter name="gui_output_clock_frequency10" value="100.0" />
+  <parameter name="gui_output_clock_frequency11" value="100.0" />
+  <parameter name="gui_output_clock_frequency12" value="100.0" />
+  <parameter name="gui_output_clock_frequency13" value="100.0" />
+  <parameter name="gui_output_clock_frequency14" value="100.0" />
+  <parameter name="gui_output_clock_frequency15" value="100.0" />
+  <parameter name="gui_output_clock_frequency16" value="100.0" />
+  <parameter name="gui_output_clock_frequency17" value="100.0" />
+  <parameter name="gui_output_clock_frequency2" value="200.0" />
+  <parameter name="gui_output_clock_frequency3" value="1.534526" />
+  <parameter name="gui_output_clock_frequency4" value="100.0" />
+  <parameter name="gui_output_clock_frequency5" value="100.0" />
+  <parameter name="gui_output_clock_frequency6" value="100.0" />
+  <parameter name="gui_output_clock_frequency7" value="100.0" />
+  <parameter name="gui_output_clock_frequency8" value="100.0" />
+  <parameter name="gui_output_clock_frequency9" value="100.0" />
+  <parameter name="gui_phase_shift0" value="0" />
+  <parameter name="gui_phase_shift1" value="0" />
+  <parameter name="gui_phase_shift10" value="0" />
+  <parameter name="gui_phase_shift11" value="0" />
+  <parameter name="gui_phase_shift12" value="0" />
+  <parameter name="gui_phase_shift13" value="0" />
+  <parameter name="gui_phase_shift14" value="0" />
+  <parameter name="gui_phase_shift15" value="0" />
+  <parameter name="gui_phase_shift16" value="0" />
+  <parameter name="gui_phase_shift17" value="0" />
+  <parameter name="gui_phase_shift2" value="0" />
+  <parameter name="gui_phase_shift3" value="0" />
+  <parameter name="gui_phase_shift4" value="0" />
+  <parameter name="gui_phase_shift5" value="0" />
+  <parameter name="gui_phase_shift6" value="0" />
+  <parameter name="gui_phase_shift7" value="0" />
+  <parameter name="gui_phase_shift8" value="0" />
+  <parameter name="gui_phase_shift9" value="0" />
+  <parameter name="gui_phase_shift_deg0" value="0.0" />
+  <parameter name="gui_phase_shift_deg1" value="0.0" />
+  <parameter name="gui_phase_shift_deg10" value="0.0" />
+  <parameter name="gui_phase_shift_deg11" value="0.0" />
+  <parameter name="gui_phase_shift_deg12" value="0.0" />
+  <parameter name="gui_phase_shift_deg13" value="0.0" />
+  <parameter name="gui_phase_shift_deg14" value="0.0" />
+  <parameter name="gui_phase_shift_deg15" value="0.0" />
+  <parameter name="gui_phase_shift_deg16" value="0.0" />
+  <parameter name="gui_phase_shift_deg17" value="0.0" />
+  <parameter name="gui_phase_shift_deg2" value="0.0" />
+  <parameter name="gui_phase_shift_deg3" value="0.0" />
+  <parameter name="gui_phase_shift_deg4" value="0.0" />
+  <parameter name="gui_phase_shift_deg5" value="0.0" />
+  <parameter name="gui_phase_shift_deg6" value="0.0" />
+  <parameter name="gui_phase_shift_deg7" value="0.0" />
+  <parameter name="gui_phase_shift_deg8" value="0.0" />
+  <parameter name="gui_phase_shift_deg9" value="0.0" />
+  <parameter name="gui_phout_division" value="1" />
+  <parameter name="gui_pll_auto_reset" value="Off" />
+  <parameter name="gui_pll_bandwidth_preset" value="Auto" />
+  <parameter name="gui_pll_cascading_mode">Create an adjpllin signal to connect with an upstream PLL</parameter>
+  <parameter name="gui_pll_mode" value="Integer-N PLL" />
+  <parameter name="gui_ps_units0" value="ps" />
+  <parameter name="gui_ps_units1" value="ps" />
+  <parameter name="gui_ps_units10" value="ps" />
+  <parameter name="gui_ps_units11" value="ps" />
+  <parameter name="gui_ps_units12" value="ps" />
+  <parameter name="gui_ps_units13" value="ps" />
+  <parameter name="gui_ps_units14" value="ps" />
+  <parameter name="gui_ps_units15" value="ps" />
+  <parameter name="gui_ps_units16" value="ps" />
+  <parameter name="gui_ps_units17" value="ps" />
+  <parameter name="gui_ps_units2" value="ps" />
+  <parameter name="gui_ps_units3" value="ps" />
+  <parameter name="gui_ps_units4" value="ps" />
+  <parameter name="gui_ps_units5" value="ps" />
+  <parameter name="gui_ps_units6" value="ps" />
+  <parameter name="gui_ps_units7" value="ps" />
+  <parameter name="gui_ps_units8" value="ps" />
+  <parameter name="gui_ps_units9" value="ps" />
+  <parameter name="gui_refclk1_frequency" value="100.0" />
+  <parameter name="gui_refclk_switch" value="false" />
+  <parameter name="gui_reference_clock_frequency" value="50.0" />
+  <parameter name="gui_switchover_delay" value="0" />
+  <parameter name="gui_switchover_mode">Automatic Switchover</parameter>
+  <parameter name="gui_use_locked" value="false" />
+ </module>
+ <module
+   name="pll_reset_conduit"
+   kind="conduit_to_reset"
+   version="1.0"
+   enabled="1">
+  <parameter name="INPUT_CONDUIT_ROLE" value="export" />
+ </module>
+ <module
+   name="pll_reset_pio"
+   kind="altera_avalon_pio"
+   version="17.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="true" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module name="pll_vip" kind="altera_pll" version="17.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
   <parameter name="device" value="5CSEBA6U23I7" />
@@ -1296,7 +1749,7 @@
   <parameter name="gui_en_adv_params" value="false" />
   <parameter name="gui_en_dps_ports" value="false" />
   <parameter name="gui_en_phout_ports" value="false" />
-  <parameter name="gui_en_reconf" value="false" />
+  <parameter name="gui_en_reconf" value="true" />
   <parameter name="gui_enable_cascade_in" value="false" />
   <parameter name="gui_enable_cascade_out" value="false" />
   <parameter name="gui_enable_mif_dps" value="false" />
@@ -1305,10 +1758,10 @@
   <parameter name="gui_fractional_cout" value="32" />
   <parameter name="gui_mif_generate" value="false" />
   <parameter name="gui_multiply_factor" value="1" />
-  <parameter name="gui_number_of_clocks" value="2" />
-  <parameter name="gui_operation_mode" value="normal" />
-  <parameter name="gui_output_clock_frequency0" value="150.0" />
-  <parameter name="gui_output_clock_frequency1" value="75.0" />
+  <parameter name="gui_number_of_clocks" value="1" />
+  <parameter name="gui_operation_mode" value="direct" />
+  <parameter name="gui_output_clock_frequency0" value="148.5" />
+  <parameter name="gui_output_clock_frequency1" value="65.0" />
   <parameter name="gui_output_clock_frequency10" value="100.0" />
   <parameter name="gui_output_clock_frequency11" value="100.0" />
   <parameter name="gui_output_clock_frequency12" value="100.0" />
@@ -1365,7 +1818,7 @@
   <parameter name="gui_pll_auto_reset" value="Off" />
   <parameter name="gui_pll_bandwidth_preset" value="Auto" />
   <parameter name="gui_pll_cascading_mode">Create an adjpllin signal to connect with an upstream PLL</parameter>
-  <parameter name="gui_pll_mode" value="Integer-N PLL" />
+  <parameter name="gui_pll_mode" value="Fractional-N PLL" />
   <parameter name="gui_ps_units0" value="ps" />
   <parameter name="gui_ps_units1" value="ps" />
   <parameter name="gui_ps_units10" value="ps" />
@@ -1392,6 +1845,48 @@
   <parameter name="gui_use_locked" value="true" />
  </module>
  <module
+   name="pll_vip_reconfig"
+   kind="altera_pll_reconfig"
+   version="17.1"
+   enabled="1">
+  <parameter name="ENABLE_BYTEENABLE" value="true" />
+  <parameter name="ENABLE_MIF" value="false" />
+  <parameter name="MIF_FILE_NAME" value="" />
+  <parameter name="device_family" value="Cyclone V" />
+ </module>
+ <module name="psu_button" kind="altera_avalon_pio" version="17.1" enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Input" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="true" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module
+   name="psu_poweroff_req"
+   kind="altera_avalon_pio"
+   version="17.1"
+   enabled="1">
+  <parameter name="bitClearingEdgeCapReg" value="false" />
+  <parameter name="bitModifyingOutReg" value="false" />
+  <parameter name="captureEdge" value="false" />
+  <parameter name="clockRate" value="50000000" />
+  <parameter name="direction" value="Output" />
+  <parameter name="edgeType" value="RISING" />
+  <parameter name="generateIRQ" value="false" />
+  <parameter name="irqType" value="LEVEL" />
+  <parameter name="resetValue" value="0" />
+  <parameter name="simDoTestBenchWiring" value="false" />
+  <parameter name="simDrivenValue" value="0" />
+  <parameter name="width" value="1" />
+ </module>
+ <module
    name="sysid_qsys"
    kind="altera_avalon_sysid_qsys"
    version="17.1"
@@ -1410,35 +1905,8 @@
  <connection
    kind="avalon"
    version="17.1"
-   start="lw_mm_bridge.m0"
-   end="jtag_uart.avalon_jtag_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010588" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="17.1"
-   start="lw_mm_bridge.m0"
-   end="ILC.avalon_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010400" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="17.1"
-   start="lw_mm_bridge.m0"
-   end="intr_capturer_0.avalon_slave_0">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010580" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="17.1"
-   start="lw_mm_bridge.m0"
-   end="alt_vip_cl_cvo_hdmi.control">
+   start="hps_0.h2f_lw_axi_master"
+   end="hm2reg_io_0.slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x00010000" />
   <parameter name="defaultConnection" value="false" />
@@ -1447,9 +1915,27 @@
    kind="avalon"
    version="17.1"
    start="lw_mm_bridge.m0"
+   end="jtag_uart.avalon_jtag_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0168" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="lw_mm_bridge.m0"
+   end="alt_vip_cl_cvo_hdmi.control">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x9000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="lw_mm_bridge.m0"
    end="alt_vip_cl_vfb_hdmi.control">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010500" />
+  <parameter name="baseAddress" value="0x8000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1458,12 +1944,21 @@
    start="lw_mm_bridge.m0"
    end="sysid_qsys.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010578" />
+  <parameter name="baseAddress" value="0x0158" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="lw_mm_bridge.m0"
+   end="pll_vip_reconfig.mgmt_avalon_slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xa000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection kind="avalon" version="17.1" start="lw_mm_bridge.m0" end="led_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010560" />
+  <parameter name="baseAddress" value="0x0140" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1472,7 +1967,7 @@
    start="lw_mm_bridge.m0"
    end="dipsw_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010550" />
+  <parameter name="baseAddress" value="0x0130" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1481,7 +1976,52 @@
    start="lw_mm_bridge.m0"
    end="button_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010540" />
+  <parameter name="baseAddress" value="0x0120" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="lw_mm_bridge.m0"
+   end="psu_button.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0110" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="lw_mm_bridge.m0"
+   end="psu_poweroff_req.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0100" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="lw_mm_bridge.m0"
+   end="locked_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xd000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="lw_mm_bridge.m0"
+   end="cvo_reset_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xc000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="lw_mm_bridge.m0"
+   end="pll_reset_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xb000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1490,16 +2030,7 @@
    start="lw_mm_bridge.m0"
    end="adc_ltc2308_fifo_0.slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010570" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="17.1"
-   start="lw_mm_bridge.m0"
-   end="hm2reg_io_0.slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x0150" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1508,25 +2039,7 @@
    start="fpga_only_master.master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010588" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="17.1"
-   start="fpga_only_master.master"
-   end="ILC.avalon_slave">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010400" />
-  <parameter name="defaultConnection" value="false" />
- </connection>
- <connection
-   kind="avalon"
-   version="17.1"
-   start="fpga_only_master.master"
-   end="intr_capturer_0.avalon_slave_0">
-  <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010580" />
+  <parameter name="baseAddress" value="0x0168" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1535,7 +2048,7 @@
    start="fpga_only_master.master"
    end="alt_vip_cl_cvo_hdmi.control">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010000" />
+  <parameter name="baseAddress" value="0x9000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1544,7 +2057,7 @@
    start="fpga_only_master.master"
    end="alt_vip_cl_vfb_hdmi.control">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010500" />
+  <parameter name="baseAddress" value="0x8000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1553,7 +2066,7 @@
    start="fpga_only_master.master"
    end="sysid_qsys.control_slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010578" />
+  <parameter name="baseAddress" value="0x0158" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1578,18 +2091,18 @@
    kind="avalon"
    version="17.1"
    start="fpga_only_master.master"
-   end="led_pio.s1">
+   end="button_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010560" />
+  <parameter name="baseAddress" value="0x0120" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="17.1"
    start="fpga_only_master.master"
-   end="button_pio.s1">
+   end="cvo_reset_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010540" />
+  <parameter name="baseAddress" value="0xc000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1598,16 +2111,43 @@
    start="fpga_only_master.master"
    end="dipsw_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010550" />
+  <parameter name="baseAddress" value="0x0130" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="17.1"
    start="fpga_only_master.master"
-   end="hm2reg_io_0.slave">
+   end="led_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x0000" />
+  <parameter name="baseAddress" value="0x0140" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="fpga_only_master.master"
+   end="pll_reset_pio.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0xb000" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="fpga_only_master.master"
+   end="psu_button.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0110" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="fpga_only_master.master"
+   end="psu_poweroff_req.s1">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x0100" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
@@ -1616,14 +2156,23 @@
    start="fpga_only_master.master"
    end="adc_ltc2308_fifo_0.slave">
   <parameter name="arbitrationPriority" value="1" />
-  <parameter name="baseAddress" value="0x00010570" />
+  <parameter name="baseAddress" value="0x0150" />
+  <parameter name="defaultConnection" value="false" />
+ </connection>
+ <connection
+   kind="avalon"
+   version="17.1"
+   start="fpga_only_master.master"
+   end="hm2reg_io_0.slave">
+  <parameter name="arbitrationPriority" value="1" />
+  <parameter name="baseAddress" value="0x00010000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
    version="17.1"
    start="alt_vip_cl_vfb_hdmi.mem_master_rd"
-   end="hps_0.f2h_axi_slave">
+   end="hps_0.f2h_sdram0_data">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0000" />
   <parameter name="defaultConnection" value="false" />
@@ -1639,11 +2188,28 @@
  <connection kind="clock" version="17.1" start="clk_50.clk" end="led_pio.clk" />
  <connection kind="clock" version="17.1" start="clk_50.clk" end="dipsw_pio.clk" />
  <connection kind="clock" version="17.1" start="clk_50.clk" end="button_pio.clk" />
+ <connection kind="clock" version="17.1" start="clk_50.clk" end="psu_button.clk" />
  <connection
    kind="clock"
    version="17.1"
    start="clk_50.clk"
-   end="hps_only_master.clk" />
+   end="psu_poweroff_req.clk" />
+ <connection kind="clock" version="17.1" start="clk_50.clk" end="locked_pio.clk" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_50.clk"
+   end="cvo_reset_pio.clk" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_50.clk"
+   end="pll_reset_pio.clk" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="clk_50.clk"
+   end="f2sdram_only_master.clk" />
  <connection
    kind="clock"
    version="17.1"
@@ -1653,18 +2219,12 @@
    kind="clock"
    version="17.1"
    start="clk_50.clk"
-   end="f2sdram_only_master.clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="ILC.clk" />
+   end="hps_only_master.clk" />
  <connection
    kind="clock"
    version="17.1"
    start="clk_50.clk"
    end="hm2reg_io_0.clock" />
- <connection
-   kind="clock"
-   version="17.1"
-   start="clk_50.clk"
-   end="intr_capturer_0.clock" />
  <connection
    kind="clock"
    version="17.1"
@@ -1679,11 +2239,6 @@
    kind="clock"
    version="17.1"
    start="clk_50.clk"
-   end="hps_0.f2h_sdram0_clock" />
- <connection
-   kind="clock"
-   version="17.1"
-   start="clk_50.clk"
    end="hps_0.h2f_axi_clock" />
  <connection
    kind="clock"
@@ -1694,27 +2249,108 @@
    kind="clock"
    version="17.1"
    start="clk_50.clk"
-   end="alt_vip_cl_vfb_hdmi.mem_clock" />
+   end="pll_vip_reconfig.mgmt_clk" />
+ <connection kind="clock" version="17.1" start="clk_50.clk" end="pll_vip.refclk" />
  <connection
    kind="clock"
    version="17.1"
    start="clk_50.clk"
-   end="pll_stream.refclk" />
+   end="pll_adc_hm2.refclk" />
  <connection
    kind="clock"
    version="17.1"
-   start="hps_0.h2f_user1_clock"
+   start="hps_0.h2f_user0_clock"
+   end="hps_0.f2h_sdram0_clock" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="hps_0.h2f_user0_clock"
+   end="alt_vip_cl_vfb_hdmi.mem_clock" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="pll_vip.outclk0"
+   end="cvo_reset_controller.clk" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="pll_adc_hm2.outclk0"
    end="adc_ltc2308_fifo_0.clock_sink_adc" />
  <connection
    kind="clock"
    version="17.1"
-   start="pll_stream.outclk0"
+   start="pll_vip.outclk0"
+   end="clk_hdmi.in_clk" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="pll_vip.outclk0"
    end="alt_vip_cl_vfb_hdmi.main_clock" />
  <connection
    kind="clock"
    version="17.1"
-   start="pll_stream.outclk0"
+   start="pll_vip.outclk0"
    end="alt_vip_cl_cvo_hdmi.main_clock" />
+ <connection
+   kind="clock"
+   version="17.1"
+   start="pll_adc_hm2.outclk1"
+   end="clock_100mhz.in_clk" />
+ <connection
+   kind="conduit"
+   version="17.1"
+   start="cvo_reset_pio.external_connection"
+   end="cvo_reset_conduit.input_conduit">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="17.1"
+   start="pll_reset_pio.external_connection"
+   end="pll_reset_conduit.input_conduit">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="17.1"
+   start="locked_pio.external_connection"
+   end="pll_vip.locked">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="17.1"
+   start="pll_vip_reconfig.reconfig_from_pll"
+   end="pll_vip.reconfig_from_pll">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
+ <connection
+   kind="conduit"
+   version="17.1"
+   start="pll_vip_reconfig.reconfig_to_pll"
+   end="pll_vip.reconfig_to_pll">
+  <parameter name="endPort" value="" />
+  <parameter name="endPortLSB" value="0" />
+  <parameter name="startPort" value="" />
+  <parameter name="startPortLSB" value="0" />
+  <parameter name="width" value="0" />
+ </connection>
  <connection
    kind="interrupt"
    version="17.1"
@@ -1742,6 +2378,13 @@
    start="hps_0.f2h_irq0"
    end="button_pio.irq">
   <parameter name="irqNumber" value="3" />
+ </connection>
+ <connection
+   kind="interrupt"
+   version="17.1"
+   start="hps_0.f2h_irq0"
+   end="psu_button.irq">
+  <parameter name="irqNumber" value="6" />
  </connection>
  <connection
    kind="interrupt"
@@ -1756,57 +2399,6 @@
    start="hps_0.f2h_irq0"
    end="alt_vip_cl_cvo_hdmi.status_update_irq">
   <parameter name="irqNumber" value="5" />
- </connection>
- <connection
-   kind="interrupt"
-   version="17.1"
-   start="intr_capturer_0.interrupt_receiver"
-   end="alt_vip_cl_vfb_hdmi.control_interrupt">
-  <parameter name="irqNumber" value="4" />
- </connection>
- <connection
-   kind="interrupt"
-   version="17.1"
-   start="intr_capturer_0.interrupt_receiver"
-   end="jtag_uart.irq">
-  <parameter name="irqNumber" value="0" />
- </connection>
- <connection
-   kind="interrupt"
-   version="17.1"
-   start="intr_capturer_0.interrupt_receiver"
-   end="dipsw_pio.irq">
-  <parameter name="irqNumber" value="2" />
- </connection>
- <connection
-   kind="interrupt"
-   version="17.1"
-   start="intr_capturer_0.interrupt_receiver"
-   end="button_pio.irq">
-  <parameter name="irqNumber" value="3" />
- </connection>
- <connection
-   kind="interrupt"
-   version="17.1"
-   start="intr_capturer_0.interrupt_receiver"
-   end="hm2reg_io_0.slv_irq">
-  <parameter name="irqNumber" value="1" />
- </connection>
- <connection kind="interrupt" version="17.1" start="ILC.irq" end="button_pio.irq">
-  <parameter name="irqNumber" value="0" />
- </connection>
- <connection kind="interrupt" version="17.1" start="ILC.irq" end="dipsw_pio.irq">
-  <parameter name="irqNumber" value="1" />
- </connection>
- <connection kind="interrupt" version="17.1" start="ILC.irq" end="jtag_uart.irq">
-  <parameter name="irqNumber" value="3" />
- </connection>
- <connection
-   kind="interrupt"
-   version="17.1"
-   start="ILC.irq"
-   end="hm2reg_io_0.slv_irq">
-  <parameter name="irqNumber" value="2" />
  </connection>
  <connection
    kind="reset"
@@ -1827,17 +2419,12 @@
    kind="reset"
    version="17.1"
    start="clk_50.clk_reset"
-   end="alt_vip_cl_vfb_hdmi.main_reset" />
- <connection
-   kind="reset"
-   version="17.1"
-   start="clk_50.clk_reset"
-   end="alt_vip_cl_cvo_hdmi.main_reset" />
- <connection
-   kind="reset"
-   version="17.1"
-   start="clk_50.clk_reset"
    end="alt_vip_cl_vfb_hdmi.mem_reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_50.clk_reset"
+   end="pll_vip_reconfig.mgmt_reset" />
  <connection
    kind="reset"
    version="17.1"
@@ -1877,12 +2464,37 @@
    kind="reset"
    version="17.1"
    start="clk_50.clk_reset"
-   end="pll_stream.reset" />
+   end="psu_button.reset" />
  <connection
    kind="reset"
    version="17.1"
    start="clk_50.clk_reset"
-   end="ILC.reset_n" />
+   end="psu_poweroff_req.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_50.clk_reset"
+   end="locked_pio.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_50.clk_reset"
+   end="cvo_reset_pio.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_50.clk_reset"
+   end="pll_reset_pio.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_50.clk_reset"
+   end="pll_adc_hm2.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="clk_50.clk_reset"
+   end="cvo_reset_controller.reset_in0" />
  <connection
    kind="reset"
    version="17.1"
@@ -1891,13 +2503,23 @@
  <connection
    kind="reset"
    version="17.1"
-   start="clk_50.clk_reset"
-   end="intr_capturer_0.reset_sink" />
+   start="pll_reset_conduit.output_reset"
+   end="pll_vip.reset" />
  <connection
    kind="reset"
    version="17.1"
-   start="fpga_only_master.master_reset"
-   end="hm2reg_io_0.reset" />
+   start="cvo_reset_conduit.output_reset"
+   end="cvo_reset_controller.reset_in1" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="cvo_reset_controller.reset_out"
+   end="alt_vip_cl_vfb_hdmi.main_reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="cvo_reset_controller.reset_out"
+   end="alt_vip_cl_cvo_hdmi.main_reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
  <interconnectRequirement for="$system" name="qsys_mm.enableEccProtection" value="FALSE" />
  <interconnectRequirement for="$system" name="qsys_mm.insertDefaultSlave" value="FALSE" />

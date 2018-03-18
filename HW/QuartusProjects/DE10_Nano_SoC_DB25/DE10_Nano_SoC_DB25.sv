@@ -135,12 +135,11 @@ wire [27:0] stm_hw_events;
 wire        fpga_clk_50;
 
 // hm2
-localparam NumIOAddrReg = 6;
 localparam AddrWidth = 16;
 localparam IOWidth   = 68;
 localparam LIOWidth  = 0;
 
-wire [AddrWidth-1:2]    hm_address;
+wire [AddrWidth-3:0]    hm_address;
 wire [31:0]             hm_datao;
 wire [31:0]             hm_datai;
 wire                    hm_read;
@@ -151,7 +150,6 @@ wire                    clklow_sig;
 wire                    clkmed_sig;
 wire                    clkhigh_sig;
 wire                    int_sig;
-wire                    hdmi_clk;
 
 // connection of internal logics
 assign LED[7:1] = fpga_led_internal;
@@ -168,6 +166,16 @@ wire hdmi_internal_sda_o;
 
 ALT_IOBUF scl_iobuf (.i(1'b0), .oe(hdmi_internal_scl_o_e), .o(hdmi_internal_scl_o), .io(HDMI_I2C_SCL));
 ALT_IOBUF sda_iobuf (.i(1'b0), .oe(hdmi_internal_sda_o_e), .o(hdmi_internal_sda_o), .io(HDMI_I2C_SDA));
+
+// i2s audio
+wire AUD_CTRL_CLK;
+AUDIO_IF u_AVG(
+        .clk(AUD_CTRL_CLK),
+        .reset_n(hps_fpga_reset_n),
+        .sclk(HDMI_SCLK),
+        .lrclk(HDMI_LRCLK),
+        .i2s(HDMI_I2S)
+);
 
 // arduino i2c connection
 wire arduino_internal_scl_o_e;
@@ -202,15 +210,12 @@ ALT_IOBUF arduino_sck_iobuf (.i(arduino_hps_0_spim0_sclk_out_clk), .oe(1'b1), .o
 
 // export hm2 int signal to arduino int0 pin (d2)
 assign ARDUINO_IO[2] = int_sig;
-assign HDMI_TX_CLK = hdmi_clk;
 
 // SoC sub-system module
 soc_system u0 (
                //Clocks & Resets
                .clk_50_clk                            (FPGA_CLK1_50),
                .reset_reset_n                         (hps_fpga_reset_n),
-               .pll_stream_locked_export              (),
-               .hdmi_clk_clk                          (hdmi_clk),
 
                //DRAM
                .memory_mem_a                          (HPS_DDR3_ADDR),
@@ -288,6 +293,7 @@ soc_system u0 (
                .hps_0_f2h_stm_hw_events_stm_hwevents  (stm_hw_events),
 
                //HDMI
+               .clk_hdmi_clk                                      (HDMI_TX_CLK),
                .alt_vip_cl_cvo_hdmi_clocked_video_vid_clk         (HDMI_TX_CLK),
                .alt_vip_cl_cvo_hdmi_clocked_video_vid_data        (HDMI_TX_D),
                .alt_vip_cl_cvo_hdmi_clocked_video_underflow       (),
@@ -305,6 +311,9 @@ soc_system u0 (
                .hps_0_i2c2_sda        (hdmi_internal_sda_o),
                .hps_0_i2c2_clk_clk    (hdmi_internal_scl_o_e),
                .hps_0_i2c2_scl_in_clk (hdmi_internal_scl_o),
+					
+					// HDMI AUDIO
+					.clk_audio_clk  (AUD_CTRL_CLK),
 
                //GPIO
                .hps_0_hps_io_hps_io_gpio_inst_GPIO09  ( HPS_CONV_USB_N ),  //                               .hps_io_gpio_inst_GPIO09
@@ -324,27 +333,33 @@ soc_system u0 (
                .hps_0_spim0_ss_2_n       (),
                .hps_0_spim0_ss_3_n       (),
                .hps_0_spim0_sclk_out_clk (arduino_hps_0_spim0_sclk_out_clk),
-/*					
-               .hps_0_uart1_cts          (),
-               .hps_0_uart1_dsr          (),
-               .hps_0_uart1_dcd          (),
-               .hps_0_uart1_ri           (),
-               .hps_0_uart1_dtr          (),
-               .hps_0_uart1_rts          (),
-               .hps_0_uart1_out1_n       (),
-               .hps_0_uart1_out2_n       (),
-               .hps_0_uart1_rxd          (arduino_hps_0_uart1_rxd),
-               .hps_0_uart1_txd          (arduino_hps_0_uart1_txd),
-*/					
+               /*
+                              .hps_0_uart1_cts          (),
+                              .hps_0_uart1_dsr          (),
+                              .hps_0_uart1_dcd          (),
+                              .hps_0_uart1_ri           (),
+                              .hps_0_uart1_dtr          (),
+                              .hps_0_uart1_rts          (),
+                              .hps_0_uart1_out1_n       (),
+                              .hps_0_uart1_out2_n       (),
+                              .hps_0_uart1_rxd          (arduino_hps_0_uart1_rxd),
+                              .hps_0_uart1_txd          (arduino_hps_0_uart1_txd),
+               */					
                .hps_0_i2c3_scl_in_clk    (arduino_internal_scl_o),
                .hps_0_i2c3_clk_clk       (arduino_internal_scl_o_e),
                .hps_0_i2c3_out_data      (arduino_internal_sda_o_e),
                .hps_0_i2c3_sda           (arduino_internal_sda_o),
                //.arduino_gpio_export      (ARDUINO_IO[9:3]),
 
+               // POWER SUPPLY UNIT
+               // psu to hps signal "user requested shutdown"
+               .psu_button_export        (ARDUINO_IO[8]),
+               // hps to psu signal "i am ready please turn power off immediately"
+               .psu_poweroff_req_export  (ARDUINO_IO[9]),
+
                //PIOs
                .button_pio_export        (fpga_debounced_buttons),
-               .dipsw_pio_export         (FPGA_DIPSW_PIO),
+               .dipsw_pio_export         (SW),
                .led_pio_export           (fpga_led_internal),
 
                // hm2reg_io_0_conduit
@@ -370,7 +385,7 @@ soc_system u0 (
 
 // Debounce logic to clean out glitches within 1ms
 debounce debounce_inst (
-             .clk                                  (fpga_clk1_50),
+             .clk                                  (fpga_clk_50),
              .reset_n                              (hps_fpga_reset_n),
              .data_in                              (KEY),
              .data_out                             (fpga_debounced_buttons)

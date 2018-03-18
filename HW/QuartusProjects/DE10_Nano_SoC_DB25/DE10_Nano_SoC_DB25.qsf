@@ -513,18 +513,6 @@ set_global_assignment -name ECO_REGENERATE_REPORT ON
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
-set_global_assignment -name QIP_FILE soc_system/synthesis/soc_system.qip
-set_global_assignment -name SYSTEMVERILOG_FILE ../Common/led_blinker.sv
-set_global_assignment -name VERILOG_FILE "../../cv-ip/altsource_probe/hps_reset.v"
-set_global_assignment -name VERILOG_FILE "../../cv-ip/edge_detect/altera_edge_detector.v"
-set_global_assignment -name VERILOG_FILE "../../cv-ip/debounce/debounce.v"
-set_global_assignment -name SYSTEMVERILOG_FILE DE10_Nano_SoC_DB25.sv
-set_global_assignment -name SDC_FILE DE10_Nano_SoC_DB25.sdc
-set_global_assignment -name VHDL_FILE ../Common/firmware_id.vhd
-set_global_assignment -name MIF_FILE firmware_id.mif
-set_global_assignment -name QIP_FILE ../../hm2/hm2_socfpga.qip
-set_global_assignment -name QIP_FILE ../../hm2/config/DE10_Nano_SoC_DB25/hm2_DE10_Nano_SoC_DB25.qip
-set_global_assignment -name VHDL_FILE hostmot2_cfg.vhd
 set_instance_assignment -name INPUT_TERMINATION "PARALLEL 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[0] -tag __hps_sdram_p0
 set_instance_assignment -name OUTPUT_TERMINATION "SERIES 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[0] -tag __hps_sdram_p0
 set_instance_assignment -name INPUT_TERMINATION "PARALLEL 50 OHM WITH CALIBRATION" -to HPS_DDR3_DQ[1] -tag __hps_sdram_p0
@@ -737,5 +725,22 @@ set_global_assignment -name OUTPUT_IO_TIMING_NEAR_END_VMEAS "HALF VCCIO" -fall
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -rise
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
 set_global_assignment -name ACTIVE_SERIAL_CLOCK FREQ_100MHZ
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name OPTIMIZATION_MODE "AGGRESSIVE PERFORMANCE"
+set_global_assignment -name ENABLE_SIGNALTAP OFF
+set_global_assignment -name USE_SIGNALTAP_FILE DE10_Nano_SoC_DB25.stp
+set_global_assignment -name VERILOG_FILE AUDIO_IF.v
+set_global_assignment -name QIP_FILE soc_system/synthesis/soc_system.qip
+set_global_assignment -name SYSTEMVERILOG_FILE ../Common/led_blinker.sv
+set_global_assignment -name VERILOG_FILE "../../cv-ip/altsource_probe/hps_reset.v"
+set_global_assignment -name VERILOG_FILE "../../cv-ip/edge_detect/altera_edge_detector.v"
+set_global_assignment -name VERILOG_FILE "../../cv-ip/debounce/debounce.v"
+set_global_assignment -name SYSTEMVERILOG_FILE DE10_Nano_SoC_DB25.sv
+set_global_assignment -name SDC_FILE soc_system_timing.sdc
+set_global_assignment -name SDC_FILE soc_system_hdmi_timing.sdc
+set_global_assignment -name VHDL_FILE ../Common/firmware_id.vhd
+set_global_assignment -name MIF_FILE firmware_id.mif
+set_global_assignment -name QIP_FILE ../../hm2/hm2_socfpga.qip
+set_global_assignment -name QIP_FILE ../../hm2/config/DE10_Nano_SoC_DB25/hm2_DE10_Nano_SoC_DB25.qip
+set_global_assignment -name VHDL_FILE hostmot2_cfg.vhd
+set_global_assignment -name SIGNALTAP_FILE DE10_Nano_SoC_DB25.stp
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
