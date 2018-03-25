@@ -459,89 +459,89 @@ HostMot2_cfg HostMot2_inst
                  .clkhigh(clkhigh_sig) , // input  clkhigh_sig    -- High speed clock --> most
                  .irq(int_sig) ,          // output  int_sig       --int => LINT, ---> PCI ?
 
-                 // GPIO_0           // DB25-P2
                  .iobits({
-                             GPIO_0[16],  // PIN 1
-                             GPIO_0[17],  // PIN 14
-                             GPIO_0[14],  // PIN 2
-                             GPIO_0[15],  // PIN 15
-                             GPIO_0[12],  // PIN 3
-                             GPIO_0[13],  // PIN 16
-                             GPIO_0[10],  // PIN 4
-                             GPIO_0[11],  // PIN 17
-                             GPIO_0[08],  // PIN 5
-                             GPIO_0[09],  // PIN 6
-                             GPIO_0[06],  // PIN 7
-                             GPIO_0[07],  // PIN 8
-                             GPIO_0[04],  // PIN 9
-                             GPIO_0[05],  // PIN 10
-                             GPIO_0[02],  // PIN 11
-                             GPIO_0[03],  // PIN 12
-                             GPIO_0[00],  // PIN 13
-
-                             // GPIO_0           // DB25-P3
-                             GPIO_0[34],  // PIN 1
-                             GPIO_0[35],  // PIN 14
-                             GPIO_0[32],  // PIN 2
-                             GPIO_0[33],  // PIN 15
-                             GPIO_0[30],  // PIN 3
-                             GPIO_0[31],  // PIN 16
-                             GPIO_0[28],  // PIN 4
-                             GPIO_0[29],  // PIN 17
-                             GPIO_0[26],  // PIN 5
-                             GPIO_0[27],  // PIN 6
-                             GPIO_0[24],  // PIN 7
-                             GPIO_0[25],  // PIN 8
-                             GPIO_0[22],  // PIN 9
-                             GPIO_0[23],  // PIN 10
-                             GPIO_0[20],  // PIN 11
-                             GPIO_0[21],  // PIN 12
-                             GPIO_0[18],  // PIN 13
+                             // GPIO_1           // DB25-P3
+                             GPIO_1[18],  // PIN 13
+                             GPIO_1[21],  // PIN 12
+                             GPIO_1[20],  // PIN 11
+                             GPIO_1[23],  // PIN 10
+                             GPIO_1[22],  // PIN 9
+                             GPIO_1[25],  // PIN 8
+                             GPIO_1[24],  // PIN 7
+                             GPIO_1[27],  // PIN 6
+                             GPIO_1[26],  // PIN 5
+                             GPIO_1[29],  // PIN 17
+                             GPIO_1[28],  // PIN 4
+                             GPIO_1[31],  // PIN 16
+                             GPIO_1[30],  // PIN 3
+                             GPIO_1[33],  // PIN 15
+                             GPIO_1[32],  // PIN 2
+                             GPIO_1[35],  // PIN 14
+                             GPIO_1[34],  // PIN 1
 
                              // GPIO_1           // DB25-P2
-                             GPIO_1[16],  // PIN 1
-                             GPIO_1[17],  // PIN 14
-                             GPIO_1[14],  // PIN 2
-                             GPIO_1[15],  // PIN 15
-                             GPIO_1[12],  // PIN 3
-                             GPIO_1[13],  // PIN 16
-                             GPIO_1[10],  // PIN 4
-                             GPIO_1[11],  // PIN 17
-                             GPIO_1[08],  // PIN 5
-                             GPIO_1[09],  // PIN 6
-                             GPIO_1[06],  // PIN 7
-                             GPIO_1[07],  // PIN 8
-                             GPIO_1[04],  // PIN 9
-                             GPIO_1[05],  // PIN 10
-                             GPIO_1[02],  // PIN 11
-                             GPIO_1[03],  // PIN 12
                              GPIO_1[00],  // PIN 13
+                             GPIO_1[03],  // PIN 12
+                             GPIO_1[02],  // PIN 11
+                             GPIO_1[05],  // PIN 10
+                             GPIO_1[04],  // PIN 9
+                             GPIO_1[07],  // PIN 8
+                             GPIO_1[06],  // PIN 7
+                             GPIO_1[09],  // PIN 6
+                             GPIO_1[08],  // PIN 5
+                             GPIO_1[11],  // PIN 17
+                             GPIO_1[10],  // PIN 4
+                             GPIO_1[13],  // PIN 16
+                             GPIO_1[12],  // PIN 3
+                             GPIO_1[15],  // PIN 15
+                             GPIO_1[14],  // PIN 2
+                             GPIO_1[17],  // PIN 14
+                             GPIO_1[16],  // PIN 1
 
-                             // GPIO_1           // DB25-P3
-                             GPIO_1[34],  // PIN 1
-                             GPIO_1[35],  // PIN 14
-                             GPIO_1[32],  // PIN 2
-                             GPIO_1[33],  // PIN 15
-                             GPIO_1[30],  // PIN 3
-                             GPIO_1[31],  // PIN 16
-                             GPIO_1[28],  // PIN 4
-                             GPIO_1[29],  // PIN 17
-                             GPIO_1[26],  // PIN 5
-                             GPIO_1[27],  // PIN 6
-                             GPIO_1[24],  // PIN 7
-                             GPIO_1[25],  // PIN 8
-                             GPIO_1[22],  // PIN 9
-                             GPIO_1[23],  // PIN 10
-                             GPIO_1[20],  // PIN 11
-                             GPIO_1[21],  // PIN 12
-                             GPIO_1[18]   // PIN 13
+                             // GPIO_0           // DB25-P1
+                             GPIO_0[18],  // PIN 13
+                             GPIO_0[21],  // PIN 12
+                             GPIO_0[20],  // PIN 11
+                             GPIO_0[23],  // PIN 10
+                             GPIO_0[22],  // PIN 9
+                             GPIO_0[25],  // PIN 8
+                             GPIO_0[24],  // PIN 7
+                             GPIO_0[27],  // PIN 6
+                             GPIO_0[26],  // PIN 5
+                             GPIO_0[29],  // PIN 17
+                             GPIO_0[28],  // PIN 4
+                             GPIO_0[31],  // PIN 16
+                             GPIO_0[30],  // PIN 3
+                             GPIO_0[33],  // PIN 15
+                             GPIO_0[32],  // PIN 2
+                             GPIO_0[35],  // PIN 14
+                             GPIO_0[34],  // PIN 1
+
+                             // GPIO_0           // DB25-P0
+                             GPIO_0[00],  // PIN 13
+                             GPIO_0[03],  // PIN 12
+                             GPIO_0[02],  // PIN 11
+                             GPIO_0[05],  // PIN 10
+                             GPIO_0[04],  // PIN 9
+                             GPIO_0[07],  // PIN 8
+                             GPIO_0[06],  // PIN 7
+                             GPIO_0[09],  // PIN 6
+                             GPIO_0[08],  // PIN 5
+                             GPIO_0[11],  // PIN 17
+                             GPIO_0[10],  // PIN 4
+                             GPIO_0[13],  // PIN 16
+                             GPIO_0[12],  // PIN 3
+                             GPIO_0[15],  // PIN 15
+                             GPIO_0[14],  // PIN 2
+                             GPIO_0[17],  // PIN 14
+                             GPIO_0[16]   // PIN 1
                          }),
 
                  .leds({
-                           GPIO_0[1],
-                           GPIO_0[19],
+                           GPIO_1[19],
                            GPIO_1[1],
-                           GPIO_1[19]
+                           GPIO_0[19],
+                           GPIO_0[1]
                        })
              );
 
