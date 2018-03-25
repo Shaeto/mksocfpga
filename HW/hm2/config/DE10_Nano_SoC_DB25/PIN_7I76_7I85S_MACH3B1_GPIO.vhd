@@ -75,10 +75,10 @@ package PIN_7I76_7I85S_MACH3B1_GPIO is
         (HM2DPLLTag,        x"00",  ClockLowTag,    x"01",  HM2DPLLBaseRateAddr&PadT,   HM2DPLLNumRegs,         x"00",  HM2DPLLMPBitMask),
         (WatchDogTag,       x"00",  ClockLowTag,    x"01",  WatchDogTimeAddr&PadT,      WatchDogNumRegs,        x"00",  WatchDogMPBitMask),
         (IOPortTag,         x"00",  ClockLowTag,    x"04",  PortAddr&PadT,              IOPortNumRegs,          x"00",  IOPortMPBitMask),
-        (QcountTag,         x"02",  ClockLowTag,    x"01",  QcounterAddr&PadT,          QCounterNumRegs,        x"00",  QCounterMPBitMask),
-        (MuxedQcountTag,    MQCRev, ClockLowTag,    x"08",  MuxedQcounterAddr&PadT,     MuxedQCounterNumRegs,   x"00", MuxedQCounterMPBitMask),
+        (QcountTag,         x"02",  ClockLowTag,    x"02",  QcounterAddr&PadT,          QCounterNumRegs,        x"00",  QCounterMPBitMask),
+        (MuxedQcountTag,    MQCRev, ClockLowTag,    x"04",  MuxedQcounterAddr&PadT,     MuxedQCounterNumRegs,   x"00", MuxedQCounterMPBitMask),
         (MuxedQCountSelTag, x"00",  ClockLowTag,    x"01",  NullAddr&PadT,              x"00",                  x"00",  x"00000000"),
-        (SSerialTag,        x"00",  ClockLowTag,    x"03",  SSerialCommandAddr&PadT,    SSerialNumRegs,         x"10",  SSerialMPBitMask),
+        (SSerialTag,        x"00",  ClockLowTag,    x"01",  SSerialCommandAddr&PadT,    SSerialNumRegs,         x"10",  SSerialMPBitMask),
         (StepGenTag,        x"02",  ClockLowTag,    x"0D",  StepGenRateAddr&PadT,       StepGenNumRegs,         x"00",  StepGenMPBitMask),
         (PWMTag,            x"00",  ClockHighTag,   x"01",  PWMValAddr&PadT,            PWMNumRegs,             x"00",  PWMMPBitMask),
         (LEDTag,            x"00",  ClockLowTag,    x"01",  LEDAddr&PadT,               LEDNumRegs,             x"00",  LEDMPBitMask),
@@ -124,9 +124,9 @@ package PIN_7I76_7I85S_MACH3B1_GPIO is
         IOPortTag & x"00" & SSerialTag & SSerialRX0Pin,             -- I/O 11   GPIO_0 07   PIN 8
         IOPortTag & x"00" & SSerialTag & SSerialTX1Pin,             -- I/O 12   GPIO_0 04   PIN 9
         IOPortTag & x"00" & SSerialTag & SSerialRX1Pin,             -- I/O 13   GPIO_0 05   PIN 10
-        IOPortTag & x"00" & QCountTag & x"03",                      -- I/O 14   GPIO_0 02   PIN 11
-        IOPortTag & x"00" & QCountTag & x"02",                      -- I/O 15   GPIO_0 03   PIN 12
-        IOPortTag & x"00" & QCountTag & x"01",                      -- I/O 16   GPIO_0 00   PIN 13
+        IOPortTag & x"00" & QCountTag & QCountIdxPin,               -- I/O 14   GPIO_0 02   PIN 11
+        IOPortTag & x"00" & QCountTag & QCountQBPin,                -- I/O 15   GPIO_0 03   PIN 12
+        IOPortTag & x"00" & QCountTag & QCountQAPin,                -- I/O 16   GPIO_0 00   PIN 13
                                                                     --          GPIO_0 01           LED0
 
 --      Base       Sec      Sec       Sec
@@ -166,9 +166,9 @@ package PIN_7I76_7I85S_MACH3B1_GPIO is
         IOPortTag & x"00" & NullTag & x"00",                        -- I/O 45   GPIO_1 07   PIN 8
         IOPortTag & x"00" & NullTag & x"00",                        -- I/O 46   GPIO_1 04   PIN 9
         IOPortTag & x"00" & NullTag & x"00",                        -- I/O 47   GPIO_1 05   PIN 10
-        IOPortTag & x"00" & QCountTag & x"03",                      -- I/O 48   GPIO_1 02   PIN 11
-        IOPortTag & x"00" & QCountTag & x"02",                      -- I/O 49   GPIO_1 03   PIN 12
-        IOPortTag & x"00" & QCountTag & x"01",                      -- I/O 50   GPIO_1 00   PIN 13
+        IOPortTag & x"01" & QCountTag & QCountIdxPin,               -- I/O 48   GPIO_1 02   PIN 11
+        IOPortTag & x"01" & QCountTag & QCountQBPin,                -- I/O 49   GPIO_1 03   PIN 12
+        IOPortTag & x"01" & QCountTag & QCountQAPin,                -- I/O 50   GPIO_1 00   PIN 13
                                                                     --          GPIO_1 01           LED2
 
 --      Base       Sec      Sec       Sec

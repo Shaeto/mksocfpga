@@ -13,11 +13,11 @@ def gen_fwid(*args,**kwargs):
     fw.board_name = "Terasic DE10-Nano"
 
     c = fw.connector.add()
-    c.name = "GPIO0.P2"
+    c.name = "GPIO0.P0"
     c.pins = 17
 
     c = fw.connector.add()
-    c.name = "GPIO0.P3"
+    c.name = "GPIO0.P1"
     c.pins = 17
 
     c = fw.connector.add()

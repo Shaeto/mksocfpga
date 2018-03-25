@@ -2503,6 +2503,16 @@
  <connection
    kind="reset"
    version="17.1"
+   start="hps_only_master.master_reset"
+   end="hm2reg_io_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
+   start="fpga_only_master.master_reset"
+   end="hm2reg_io_0.reset" />
+ <connection
+   kind="reset"
+   version="17.1"
    start="pll_reset_conduit.output_reset"
    end="pll_vip.reset" />
  <connection
