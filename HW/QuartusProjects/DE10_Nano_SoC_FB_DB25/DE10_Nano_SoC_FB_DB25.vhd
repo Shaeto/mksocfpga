@@ -37,8 +37,22 @@ use ieee.numeric_std.all;
 use work.soc_pkg.all;
 use work.cv_ip_pkg.all;
 
-entity DE0_Nano_SoC_DB25 is
+entity DE10_Nano_SoC_FB_DB25 is
     port (
+        --------- HDMI ---------
+        HDMI_I2C_SCL       : inout std_logic;
+        HDMI_I2C_SDA       : inout std_logic;
+        HDMI_I2S           : inout std_logic;
+        HDMI_LRCLK         : inout std_logic;
+        HDMI_MCLK          : inout std_logic;
+        HDMI_SCLK          : inout std_logic;
+        HDMI_TX_CLK        : out std_logic;
+        HDMI_TX_D          : out std_logic_vector(23 downto 0);
+        HDMI_TX_DE         : out std_logic;
+        HDMI_TX_HS         : out std_logic;
+        HDMI_TX_INT        : in std_logic;
+        HDMI_TX_VS         : out std_logic;
+
         --------- ADC ---------
         ADC_CONVST         : out   std_logic;
         ADC_SCK            : out   std_logic;
@@ -116,9 +130,9 @@ entity DE0_Nano_SoC_DB25 is
 
         --------- SW ---------
         SW                 : in    std_logic_vector(3 downto 0) );
-end DE0_Nano_SoC_DB25;
+end DE10_Nano_SoC_FB_DB25;
 
-architecture arch of DE0_Nano_SoC_DB25 is
+architecture arch of DE10_Nano_SoC_FB_DB25 is
 
     -- REG/WIRE declarations
     signal hps_fpga_reset_n         : std_logic;
@@ -153,6 +167,7 @@ architecture arch of DE0_Nano_SoC_DB25 is
 
     signal counter                  : unsigned(25 downto 0);
     signal led_level                : std_logic;
+    signal lcd_clk                  : std_logic;
 begin
 
 -- connection of internal logics
@@ -160,7 +175,7 @@ begin
     fpga_clk_50     <= FPGA_CLK2_50;
     stm_hw_events   <= b"00000000000000" & SW & fpga_led_internal & fpga_debounced_buttons;
     ARDUINO_IO(15)  <= irq;
-
+    HDMI_TX_CLK     <= lcd_clk;
 --=======================================================
 --  Structural coding
 --=======================================================
@@ -254,9 +269,9 @@ begin
         hps_0_hps_io_hps_io_gpio_inst_GPIO61    => HPS_GSENSOR_INT,         --                               .hps_io_gpio_inst_GPIO61
 
         --FPGA Partion
-        led_pio_export                          => fpga_led_internal,       --    led_pio_external_connection.export
+        led_pio_export                          => fpga_led_internal(6 downto 0),       --    led_pio_external_connection.export
         dipsw_pio_export                        => SW,                      --  dipsw_pio_external_connection.export
-        button_pio_export                       => buttons,                 -- button_pio_external_connection.export
+        button_pio_export                       => buttons(1 downto 0),     -- button_pio_external_connection.export
         hps_0_h2f_reset_reset_n                 => hps_fpga_reset_n,        --                hps_0_h2f_reset.reset_n
         hps_0_f2h_cold_reset_req_reset_n        => not hps_cold_reset,      --       hps_0_f2h_cold_reset_req.reset_n
         hps_0_f2h_debug_reset_req_reset_n       => not hps_debug_reset,     --      hps_0_f2h_debug_reset_req.reset_n
@@ -275,7 +290,17 @@ begin
 --      mk_io_hm2_we                            => hm_chipsel,              --                               .hm2_chipsel
         mk_io_hm2_int_in                        => irq,                     --                               .hm2_int_in
         clk_100mhz_out_clk                      => hm_clk_med,              --                 clk_100mhz_out.clk
-        clk_200mhz_out_clk                      => hm_clk_high              --                 clk_100mhz_out.clk
+        clk_200mhz_out_clk                      => hm_clk_high,             --                 clk_100mhz_out.clk
+        alt_vip_itc_0_clocked_video_vid_clk     => lcd_clk,           -- alt_vip_itc_0_clocked_video.vid_clk
+        alt_vip_itc_0_clocked_video_vid_data (23 downto 0)     => HDMI_TX_D,             --                            .vid_data
+--      alt_vip_itc_0_clocked_video_underflow     => CONNECTED_TO_alt_vip_itc_0_clocked_video_underflow,     --                            .underflow
+        alt_vip_itc_0_clocked_video_vid_datavalid => HDMI_TX_DE,            --                            .vid_datavalid
+        alt_vip_itc_0_clocked_video_vid_v_sync    => HDMI_TX_VS,            --                            .vid_v_sync
+        alt_vip_itc_0_clocked_video_vid_h_sync    => HDMI_TX_HS,            --                            .vid_h_sync
+--      alt_vip_itc_0_clocked_video_vid_f         => CONNECTED_TO_alt_vip_itc_0_clocked_video_vid_f,         --                            .vid_f
+--      alt_vip_itc_0_clocked_video_vid_h         => CONNECTED_TO_alt_vip_itc_0_clocked_video_vid_h,         --                            .vid_h
+--      alt_vip_itc_0_clocked_video_vid_v         => CONNECTED_TO_alt_vip_itc_0_clocked_video_vid_v,         --                            .vid_v
+        lcd_clk_clk                               => lcd_clk                --                     lcd_clk.clk
 );
 
 -- Debounce logic to clean out glitches within 1ms
@@ -349,6 +374,21 @@ begin
     end process;
 
     LED(0)  <= led_level;
+
+-- HDMI Config ------------------------------------------------------
+
+    I2C_HDMI_Config_inst : I2C_HDMI_Config
+   port map (
+        iCLK        => fpga_clk_50,
+        iRST_N      => '1',
+        I2C_SCLK    => HDMI_I2C_SCL,
+        I2C_SDAT    => HDMI_I2C_SDA,
+        HDMI_TX_INT => HDMI_TX_INT
+--        READY       =>
+        );
+
+
+
 
 -- Mesa code --------------------------------------------------------
 
