@@ -577,7 +577,7 @@
  <module
    name="alt_vip_cl_cvo_hdmi"
    kind="alt_vip_cl_cvo"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="ACCEPT_COLOURS_IN_SEQ" value="0" />
   <parameter name="ACCEPT_SYNC" value="0" />
@@ -628,7 +628,7 @@
  <module
    name="alt_vip_cl_vfb_hdmi"
    kind="alt_vip_cl_vfb"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
   <parameter name="AUTO_DEVICE_SPEEDGRADE" value="7" />
@@ -656,6 +656,7 @@
   <parameter name="MULTI_FRAME_DELAY" value="1" />
   <parameter name="NUMBER_OF_COLOR_PLANES" value="4" />
   <parameter name="PIXELS_IN_PARALLEL" value="1" />
+  <parameter name="PRIORITIZE_FMAX" value="0" />
   <parameter name="READER_RUNTIME_CONTROL" value="1" />
   <parameter name="READY_LATENCY" value="1" />
   <parameter name="READ_BURST_TARGET" value="32" />
@@ -668,7 +669,7 @@
   <parameter name="WRITE_BURST_TARGET" value="2" />
   <parameter name="WRITE_FIFO_DEPTH" value="8" />
  </module>
- <module name="button_pio" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="button_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="true" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="true" />
@@ -682,13 +683,13 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="2" />
  </module>
- <module name="clk_50" kind="clock_source" version="17.1" enabled="1">
+ <module name="clk_50" kind="clock_source" version="18.1" enabled="1">
   <parameter name="clockFrequency" value="50000000" />
   <parameter name="clockFrequencyKnown" value="true" />
   <parameter name="inputClockFrequency" value="0" />
   <parameter name="resetSynchronousEdges" value="NONE" />
  </module>
- <module name="clk_hdmi" kind="altera_clock_bridge" version="17.1" enabled="1">
+ <module name="clk_hdmi" kind="altera_clock_bridge" version="18.1" enabled="1">
   <parameter name="DERIVED_CLOCK_RATE" value="148500000" />
   <parameter name="EXPLICIT_CLOCK_RATE" value="0" />
   <parameter name="NUM_CLOCK_OUTPUTS" value="1" />
@@ -696,7 +697,7 @@
  <module
    name="clock_100mhz"
    kind="altera_clock_bridge"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="DERIVED_CLOCK_RATE" value="100000000" />
   <parameter name="EXPLICIT_CLOCK_RATE" value="100000000" />
@@ -712,7 +713,7 @@
  <module
    name="cvo_reset_controller"
    kind="altera_reset_controller"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="MIN_RST_ASSERTION_TIME" value="3" />
   <parameter name="NUM_RESET_INPUTS" value="2" />
@@ -742,7 +743,7 @@
  <module
    name="cvo_reset_pio"
    kind="altera_avalon_pio"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="true" />
@@ -757,7 +758,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
- <module name="dipsw_pio" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="dipsw_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="true" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="true" />
@@ -774,7 +775,7 @@
  <module
    name="f2sdram_only_master"
    kind="altera_jtag_avalon_master"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
@@ -788,7 +789,7 @@
  <module
    name="fpga_only_master"
    kind="altera_jtag_avalon_master"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
@@ -804,7 +805,7 @@
   <parameter name="DATA_WIDTH" value="32" />
   <parameter name="IRQ_EN" value="1" />
  </module>
- <module name="hps_0" kind="altera_hps" version="17.1" enabled="1">
+ <module name="hps_0" kind="altera_hps" version="18.1" enabled="1">
   <parameter name="ABSTRACT_REAL_COMPARE_TEST" value="false" />
   <parameter name="ABS_RAM_MEM_INIT_FILENAME" value="meminit" />
   <parameter name="ACV_PHY_CLK_ADD_FR_PHASE" value="0.0" />
@@ -1337,7 +1338,7 @@
  <module
    name="hps_only_master"
    kind="altera_jtag_avalon_master"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="AUTO_DEVICE" value="5CSEBA6U23I7" />
   <parameter name="AUTO_DEVICE_FAMILY" value="Cyclone V" />
@@ -1351,7 +1352,7 @@
  <module
    name="jtag_uart"
    kind="altera_avalon_jtag_uart"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="allowMultipleConnections" value="true" />
   <parameter name="avalonSpec" value="2.0" />
@@ -1367,7 +1368,7 @@
   <parameter name="writeBufferDepth" value="64" />
   <parameter name="writeIRQThreshold" value="8" />
  </module>
- <module name="led_pio" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="led_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -1381,7 +1382,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="7" />
  </module>
- <module name="locked_pio" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="locked_pio" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="true" />
   <parameter name="captureEdge" value="false" />
@@ -1398,7 +1399,7 @@
  <module
    name="lw_mm_bridge"
    kind="altera_avalon_mm_bridge"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="ADDRESS_UNITS" value="SYMBOLS" />
   <parameter name="ADDRESS_WIDTH" value="19" />
@@ -1413,7 +1414,7 @@
   <parameter name="USE_AUTO_ADDRESS_WIDTH" value="1" />
   <parameter name="USE_RESPONSE" value="0" />
  </module>
- <module name="pll_adc_hm2" kind="altera_pll" version="17.1" enabled="1">
+ <module name="pll_adc_hm2" kind="altera_pll" version="18.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
   <parameter name="device" value="5CSEBA6U23I7" />
@@ -1476,7 +1477,7 @@
   <parameter name="gui_cascade_outclk_index" value="0" />
   <parameter name="gui_channel_spacing" value="0.0" />
   <parameter name="gui_clk_bad" value="false" />
-  <parameter name="gui_device_speed_grade" value="1" />
+  <parameter name="gui_device_speed_grade" value="2" />
   <parameter name="gui_divide_factor_c0" value="1" />
   <parameter name="gui_divide_factor_c1" value="1" />
   <parameter name="gui_divide_factor_c10" value="1" />
@@ -1626,7 +1627,7 @@
  <module
    name="pll_reset_pio"
    kind="altera_avalon_pio"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="true" />
@@ -1641,7 +1642,7 @@
   <parameter name="simDrivenValue" value="0" />
   <parameter name="width" value="1" />
  </module>
- <module name="pll_vip" kind="altera_pll" version="17.1" enabled="1">
+ <module name="pll_vip" kind="altera_pll" version="18.1" enabled="1">
   <parameter name="debug_print_output" value="false" />
   <parameter name="debug_use_rbc_taf_method" value="false" />
   <parameter name="device" value="5CSEBA6U23I7" />
@@ -1847,14 +1848,14 @@
  <module
    name="pll_vip_reconfig"
    kind="altera_pll_reconfig"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="ENABLE_BYTEENABLE" value="true" />
   <parameter name="ENABLE_MIF" value="false" />
   <parameter name="MIF_FILE_NAME" value="" />
   <parameter name="device_family" value="Cyclone V" />
  </module>
- <module name="psu_button" kind="altera_avalon_pio" version="17.1" enabled="1">
+ <module name="psu_button" kind="altera_avalon_pio" version="18.1" enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
   <parameter name="captureEdge" value="false" />
@@ -1871,7 +1872,7 @@
  <module
    name="psu_poweroff_req"
    kind="altera_avalon_pio"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="bitClearingEdgeCapReg" value="false" />
   <parameter name="bitModifyingOutReg" value="false" />
@@ -1889,13 +1890,13 @@
  <module
    name="sysid_qsys"
    kind="altera_avalon_sysid_qsys"
-   version="17.1"
+   version="18.1"
    enabled="1">
   <parameter name="id" value="-1395321854" />
  </module>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="hps_0.h2f_lw_axi_master"
    end="lw_mm_bridge.s0">
   <parameter name="arbitrationPriority" value="1" />
@@ -1904,7 +1905,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="hps_0.h2f_lw_axi_master"
    end="hm2reg_io_0.slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -1913,7 +1914,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -1922,7 +1923,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="alt_vip_cl_cvo_hdmi.control">
   <parameter name="arbitrationPriority" value="1" />
@@ -1931,7 +1932,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="alt_vip_cl_vfb_hdmi.control">
   <parameter name="arbitrationPriority" value="1" />
@@ -1940,7 +1941,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="sysid_qsys.control_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -1949,21 +1950,21 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="pll_vip_reconfig.mgmt_avalon_slave">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0xa000" />
   <parameter name="defaultConnection" value="false" />
  </connection>
- <connection kind="avalon" version="17.1" start="lw_mm_bridge.m0" end="led_pio.s1">
+ <connection kind="avalon" version="18.1" start="lw_mm_bridge.m0" end="led_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
   <parameter name="baseAddress" value="0x0140" />
   <parameter name="defaultConnection" value="false" />
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="dipsw_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1972,7 +1973,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="button_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1981,7 +1982,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="psu_button.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1990,7 +1991,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="psu_poweroff_req.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -1999,7 +2000,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="locked_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2008,7 +2009,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="cvo_reset_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2017,7 +2018,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="pll_reset_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2026,7 +2027,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="lw_mm_bridge.m0"
    end="adc_ltc2308_fifo_0.slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -2035,7 +2036,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="jtag_uart.avalon_jtag_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -2044,7 +2045,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="alt_vip_cl_cvo_hdmi.control">
   <parameter name="arbitrationPriority" value="1" />
@@ -2053,7 +2054,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="alt_vip_cl_vfb_hdmi.control">
   <parameter name="arbitrationPriority" value="1" />
@@ -2062,7 +2063,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="sysid_qsys.control_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -2071,7 +2072,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="hps_only_master.master"
    end="hps_0.f2h_axi_slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -2080,7 +2081,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="f2sdram_only_master.master"
    end="hps_0.f2h_sdram0_data">
   <parameter name="arbitrationPriority" value="1" />
@@ -2089,7 +2090,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="button_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2098,7 +2099,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="cvo_reset_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2107,7 +2108,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="dipsw_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2116,7 +2117,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="led_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2125,7 +2126,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="pll_reset_pio.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2134,7 +2135,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="psu_button.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2143,7 +2144,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="psu_poweroff_req.s1">
   <parameter name="arbitrationPriority" value="1" />
@@ -2152,7 +2153,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="adc_ltc2308_fifo_0.slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -2161,7 +2162,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master"
    end="hm2reg_io_0.slave">
   <parameter name="arbitrationPriority" value="1" />
@@ -2170,7 +2171,7 @@
  </connection>
  <connection
    kind="avalon"
-   version="17.1"
+   version="18.1"
    start="alt_vip_cl_vfb_hdmi.mem_master_rd"
    end="hps_0.f2h_sdram0_data">
   <parameter name="arbitrationPriority" value="1" />
@@ -2179,126 +2180,126 @@
  </connection>
  <connection
    kind="avalon_streaming"
-   version="17.1"
+   version="18.1"
    start="alt_vip_cl_vfb_hdmi.dout"
    end="alt_vip_cl_cvo_hdmi.din" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="lw_mm_bridge.clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="sysid_qsys.clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="jtag_uart.clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="led_pio.clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="dipsw_pio.clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="button_pio.clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="psu_button.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="lw_mm_bridge.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="sysid_qsys.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="jtag_uart.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="led_pio.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="dipsw_pio.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="button_pio.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="psu_button.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="psu_poweroff_req.clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="locked_pio.clk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="locked_pio.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="cvo_reset_pio.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="pll_reset_pio.clk" />
  <connection
    kind="clock"
-   version="17.1"
-   start="clk_50.clk"
-   end="f2sdram_only_master.clk" />
- <connection
-   kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="fpga_only_master.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="hps_only_master.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="hm2reg_io_0.clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="adc_ltc2308_fifo_0.clock_sink" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="hps_0.f2h_axi_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="hps_0.h2f_axi_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="hps_0.h2f_lw_axi_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="pll_vip_reconfig.mgmt_clk" />
- <connection kind="clock" version="17.1" start="clk_50.clk" end="pll_vip.refclk" />
+ <connection kind="clock" version="18.1" start="clk_50.clk" end="pll_vip.refclk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk"
    end="pll_adc_hm2.refclk" />
  <connection
    kind="clock"
-   version="17.1"
-   start="hps_0.h2f_user0_clock"
+   version="18.1"
+   start="hps_0.h2f_user2_clock"
+   end="f2sdram_only_master.clk" />
+ <connection
+   kind="clock"
+   version="18.1"
+   start="hps_0.h2f_user2_clock"
    end="hps_0.f2h_sdram0_clock" />
  <connection
    kind="clock"
-   version="17.1"
-   start="hps_0.h2f_user0_clock"
+   version="18.1"
+   start="hps_0.h2f_user2_clock"
    end="alt_vip_cl_vfb_hdmi.mem_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="pll_vip.outclk0"
    end="cvo_reset_controller.clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="pll_adc_hm2.outclk0"
    end="adc_ltc2308_fifo_0.clock_sink_adc" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="pll_vip.outclk0"
    end="clk_hdmi.in_clk" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="pll_vip.outclk0"
    end="alt_vip_cl_vfb_hdmi.main_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="pll_vip.outclk0"
    end="alt_vip_cl_cvo_hdmi.main_clock" />
  <connection
    kind="clock"
-   version="17.1"
+   version="18.1"
    start="pll_adc_hm2.outclk1"
    end="clock_100mhz.in_clk" />
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.1"
    start="cvo_reset_pio.external_connection"
    end="cvo_reset_conduit.input_conduit">
   <parameter name="endPort" value="" />
@@ -2309,7 +2310,7 @@
  </connection>
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.1"
    start="pll_reset_pio.external_connection"
    end="pll_reset_conduit.input_conduit">
   <parameter name="endPort" value="" />
@@ -2320,7 +2321,7 @@
  </connection>
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.1"
    start="locked_pio.external_connection"
    end="pll_vip.locked">
   <parameter name="endPort" value="" />
@@ -2331,7 +2332,7 @@
  </connection>
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.1"
    start="pll_vip_reconfig.reconfig_from_pll"
    end="pll_vip.reconfig_from_pll">
   <parameter name="endPort" value="" />
@@ -2342,7 +2343,7 @@
  </connection>
  <connection
    kind="conduit"
-   version="17.1"
+   version="18.1"
    start="pll_vip_reconfig.reconfig_to_pll"
    end="pll_vip.reconfig_to_pll">
   <parameter name="endPort" value="" />
@@ -2353,181 +2354,181 @@
  </connection>
  <connection
    kind="interrupt"
-   version="17.1"
+   version="18.1"
    start="hps_0.f2h_irq0"
    end="alt_vip_cl_vfb_hdmi.control_interrupt">
   <parameter name="irqNumber" value="0" />
  </connection>
  <connection
    kind="interrupt"
-   version="17.1"
+   version="18.1"
    start="hps_0.f2h_irq0"
    end="jtag_uart.irq">
   <parameter name="irqNumber" value="1" />
  </connection>
  <connection
    kind="interrupt"
-   version="17.1"
+   version="18.1"
    start="hps_0.f2h_irq0"
    end="dipsw_pio.irq">
   <parameter name="irqNumber" value="2" />
  </connection>
  <connection
    kind="interrupt"
-   version="17.1"
+   version="18.1"
    start="hps_0.f2h_irq0"
    end="button_pio.irq">
   <parameter name="irqNumber" value="3" />
  </connection>
  <connection
    kind="interrupt"
-   version="17.1"
+   version="18.1"
    start="hps_0.f2h_irq0"
    end="psu_button.irq">
   <parameter name="irqNumber" value="6" />
  </connection>
  <connection
    kind="interrupt"
-   version="17.1"
+   version="18.1"
    start="hps_0.f2h_irq0"
    end="hm2reg_io_0.slv_irq">
   <parameter name="irqNumber" value="4" />
  </connection>
  <connection
    kind="interrupt"
-   version="17.1"
+   version="18.1"
    start="hps_0.f2h_irq0"
    end="alt_vip_cl_cvo_hdmi.status_update_irq">
   <parameter name="irqNumber" value="5" />
  </connection>
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="hps_only_master.clk_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="fpga_only_master.clk_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="f2sdram_only_master.clk_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="alt_vip_cl_vfb_hdmi.mem_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="pll_vip_reconfig.mgmt_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="lw_mm_bridge.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="sysid_qsys.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="jtag_uart.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="button_pio.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="dipsw_pio.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="led_pio.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="hm2reg_io_0.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="psu_button.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="psu_poweroff_req.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="locked_pio.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="cvo_reset_pio.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="pll_reset_pio.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="pll_adc_hm2.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="cvo_reset_controller.reset_in0" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="clk_50.clk_reset"
    end="adc_ltc2308_fifo_0.reset_sink" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="hps_only_master.master_reset"
    end="hm2reg_io_0.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="fpga_only_master.master_reset"
    end="hm2reg_io_0.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="pll_reset_conduit.output_reset"
    end="pll_vip.reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="cvo_reset_conduit.output_reset"
    end="cvo_reset_controller.reset_in1" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="cvo_reset_controller.reset_out"
    end="alt_vip_cl_vfb_hdmi.main_reset" />
  <connection
    kind="reset"
-   version="17.1"
+   version="18.1"
    start="cvo_reset_controller.reset_out"
    end="alt_vip_cl_cvo_hdmi.main_reset" />
  <interconnectRequirement for="$system" name="qsys_mm.clockCrossingAdapter" value="HANDSHAKE" />
