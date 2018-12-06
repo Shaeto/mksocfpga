@@ -69,7 +69,7 @@ use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 use work.IDROMConst.all;
 
-package PIN_7I76_7I85S_MACH3B1_GPIO is
+package PIN_7I76_7I85S_MACH3B1_MACH3B2 is
     constant ModuleID : ModuleIDType :=(
         -- GTag             Version Clock           NumInst BaseAddr                    NumRegisters            Strides MultiRegs
         (HM2DPLLTag,        x"00",  ClockLowTag,    x"01",  HM2DPLLBaseRateAddr&PadT,   HM2DPLLNumRegs,         x"00",  HM2DPLLMPBitMask),
@@ -79,8 +79,8 @@ package PIN_7I76_7I85S_MACH3B1_GPIO is
         (MuxedQcountTag,    MQCRev, ClockLowTag,    x"04",  MuxedQcounterAddr&PadT,     MuxedQCounterNumRegs,   x"00", MuxedQCounterMPBitMask),
         (MuxedQCountSelTag, x"00",  ClockLowTag,    x"01",  NullAddr&PadT,              x"00",                  x"00",  x"00000000"),
         (SSerialTag,        x"00",  ClockLowTag,    x"01",  SSerialCommandAddr&PadT,    SSerialNumRegs,         x"10",  SSerialMPBitMask),
-        (StepGenTag,        x"02",  ClockLowTag,    x"0C",  StepGenRateAddr&PadT,       StepGenNumRegs,         x"00",  StepGenMPBitMask),
-        (PWMTag,            x"00",  ClockHighTag,   x"01",  PWMValAddr&PadT,            PWMNumRegs,             x"00",  PWMMPBitMask),
+        (StepGenTag,        x"02",  ClockLowTag,    x"0F",  StepGenRateAddr&PadT,       StepGenNumRegs,         x"00",  StepGenMPBitMask),
+        (PWMTag,            x"00",  ClockHighTag,   x"02",  PWMValAddr&PadT,            PWMNumRegs,             x"00",  PWMMPBitMask),
         (LEDTag,            x"00",  ClockLowTag,    x"01",  LEDAddr&PadT,               LEDNumRegs,             x"00",  LEDMPBitMask),
         (FWIDTag,           x"00",  ClockLowTag,    x"01",  FWIDAddr&PadT,              FWIDNumRegs,            x"00",  FWIDMPBitMask),
         (NullTag,           x"00",  NullTag,        x"00",  NullAddr&PadT,              x"00",                  x"00",  x"00000000"),
@@ -152,44 +152,44 @@ package PIN_7I76_7I85S_MACH3B1_GPIO is
 
 --      Base       Sec      Sec       Sec
 --      func       unit     func      pin                           -- hostmot2 DE10-Nano    DB25-P3
-        IOPortTag & x"00" & PWMTag & PWMCEnaPin,                    -- I/O 34   GPIO_1 16   PIN 1
-        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 35   GPIO_1 17   PIN 14
-        IOPortTag & x"09" & StepGenTag & StepGenDirPin,             -- I/O 36   GPIO_1 14   PIN 2
-        IOPortTag & x"09" & StepGenTag & StepGenStepPin,            -- I/O 37   GPIO_1 15   PIN 15
-        IOPortTag & x"0A" & StepGenTag & StepGenDirPin,             -- I/O 38   GPIO_1 12   PIN 3
-        IOPortTag & x"0A" & StepGenTag & StepGenStepPin,            -- I/O 39   GPIO_1 13   PIN 16
-        IOPortTag & x"0B" & StepGenTag & StepGenDirPin,             -- I/O 40   GPIO_1 10   PIN 4
-        IOPortTag & x"0B" & StepGenTag & StepGenStepPin,            -- I/O 41   GPIO_1 11   PIN 17
-        IOPortTag & x"00" & PWMTag & PWMBDirPin,                    -- I/O 42   GPIO_1 08   PIN 5
-        IOPortTag & x"00" & PWMTag & PWMAOutPin,                    -- I/O 43   GPIO_1 09   PIN 6
-        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 44   GPIO_1 06   PIN 7
-        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 45   GPIO_1 07   PIN 8
-        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 46   GPIO_1 04   PIN 9
+        IOPortTag & x"00" & PWMTag & PWMAOutPin,                    -- I/O 34   GPIO_1 16   PIN 1
+        IOPortTag & x"00" & PWMTag & PWMBDirPin,                    -- I/O 35   GPIO_1 17   PIN 14
+        IOPortTag & x"00" & PWMTag & PWMCEnaPin,                    -- I/O 36   GPIO_1 14   PIN 2
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 37   GPIO_1 15   PIN 15
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 38   GPIO_1 12   PIN 3
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 39   GPIO_1 13   PIN 16
+        IOPortTag & x"09" & StepGenTag & StepGenDirPin,             -- I/O 40   GPIO_1 10   PIN 4
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 41   GPIO_1 11   PIN 17
+        IOPortTag & x"09" & StepGenTag & StepGenStepPin,            -- I/O 42   GPIO_1 08   PIN 5
+        IOPortTag & x"0A" & StepGenTag & StepGenDirPin,             -- I/O 43   GPIO_1 09   PIN 6
+        IOPortTag & x"0A" & StepGenTag & StepGenStepPin,            -- I/O 44   GPIO_1 06   PIN 7
+        IOPortTag & x"0B" & StepGenTag & StepGenDirPin,             -- I/O 45   GPIO_1 07   PIN 8
+        IOPortTag & x"0B" & StepGenTag & StepGenStepPin,            -- I/O 46   GPIO_1 04   PIN 9
         IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 47   GPIO_1 05   PIN 10
-        IOPortTag & x"01" & QCountTag & QCountIdxPin,               -- I/O 48   GPIO_1 02   PIN 11
+        IOPortTag & x"01" & QCountTag & QCountQAPin,                -- I/O 48   GPIO_1 02   PIN 11
         IOPortTag & x"01" & QCountTag & QCountQBPin,                -- I/O 49   GPIO_1 03   PIN 12
-        IOPortTag & x"01" & QCountTag & QCountQAPin,                -- I/O 50   GPIO_1 00   PIN 13
+        IOPortTag & x"01" & QCountTag & QCountIdxPin,               -- I/O 50   GPIO_1 00   PIN 13
                                                                     --          GPIO_1 01           LED2
 
 --      Base       Sec      Sec       Sec
 --      func       unit     func      pin                           -- hostmot2 DE10-Nano    DB25-P4
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 51   GPIO_1 34   PIN 1
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 52   GPIO_1 35   PIN 14
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 53   GPIO_1 32   PIN 2
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 54   GPIO_1 33   PIN 15
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 55   GPIO_1 30   PIN 3
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 56   GPIO_1 31   PIN 16
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 57   GPIO_1 28   PIN 4
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 58   GPIO_1 29   PIN 17
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 59   GPIO_1 26   PIN 5
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 60   GPIO_1 27   PIN 6
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 61   GPIO_1 24   PIN 7
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 62   GPIO_1 25   PIN 8
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 63   GPIO_1 22   PIN 9
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 64   GPIO_1 23   PIN 10
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 65   GPIO_1 20   PIN 11
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 66   GPIO_1 21   PIN 12
-        IOPortTag & x"00" & NullTag & x"00",                        -- I/O 67   GPIO_1 18   PIN 13
+        IOPortTag & x"01" & PWMTag & PWMAOutPin,                    -- I/O 51   GPIO_1 34   PIN 1
+        IOPortTag & x"01" & PWMTag & PWMBDirPin,                    -- I/O 52   GPIO_1 35   PIN 14
+        IOPortTag & x"01" & PWMTag & PWMCEnaPin,                    -- I/O 53   GPIO_1 32   PIN 2
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 54   GPIO_1 33   PIN 15
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 55   GPIO_1 30   PIN 3
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 56   GPIO_1 31   PIN 16
+        IOPortTag & x"0C" & StepGenTag & StepGenDirPin,             -- I/O 57   GPIO_1 28   PIN 4
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 58   GPIO_1 29   PIN 17
+        IOPortTag & x"0C" & StepGenTag & StepGenStepPin,            -- I/O 59   GPIO_1 26   PIN 5
+        IOPortTag & x"0D" & StepGenTag & StepGenDirPin,             -- I/O 60   GPIO_1 27   PIN 6
+        IOPortTag & x"0D" & StepGenTag & StepGenStepPin,            -- I/O 61   GPIO_1 24   PIN 7
+        IOPortTag & x"0E" & StepGenTag & StepGenDirPin,             -- I/O 62   GPIO_1 25   PIN 8
+        IOPortTag & x"0E" & StepGenTag & StepGenStepPin,            -- I/O 63   GPIO_1 22   PIN 9
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 64   GPIO_1 23   PIN 10
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 65   GPIO_1 20   PIN 11
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 66   GPIO_1 21   PIN 12
+        IOPortTag & x"00" & NullTag & NullPin,                      -- I/O 67   GPIO_1 18   PIN 13
                                                                     --          GPIO_1 19           LED3
 
         -- Remainder of 144 pin descriptors are unused
@@ -204,4 +204,4 @@ package PIN_7I76_7I85S_MACH3B1_GPIO is
         emptypin,emptypin,emptypin,emptypin,emptypin,emptypin,emptypin,emptypin,
         emptypin,emptypin,emptypin,emptypin,emptypin,emptypin,emptypin,emptypin);
 
-end package PIN_7I76_7I85S_MACH3B1_GPIO;
+end package PIN_7I76_7I85S_MACH3B1_MACH3B2;
