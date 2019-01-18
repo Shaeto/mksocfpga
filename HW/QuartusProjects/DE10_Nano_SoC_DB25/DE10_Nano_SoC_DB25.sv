@@ -215,7 +215,7 @@ assign ARDUINO_IO[2] = int_sig;
 soc_system u0 (
                //Clocks & Resets
                .clk_50_clk                            (FPGA_CLK1_50),
-               .reset_reset_n                         (hps_fpga_reset_n),
+               .hps_0_h2f_reset_reset_n               (hps_fpga_reset_n),
 
                //DRAM
                .memory_mem_a                          (HPS_DDR3_ADDR),
@@ -286,7 +286,6 @@ soc_system u0 (
                .hps_0_hps_io_hps_io_i2c1_inst_SCL     (HPS_I2C1_SCLK),
 
                //STM
-               .hps_0_h2f_reset_reset_n               (hps_fpga_reset_n),
                .hps_0_f2h_cold_reset_req_reset_n      (~hps_cold_reset),
                .hps_0_f2h_debug_reset_req_reset_n     (~hps_debug_reset),
                .hps_0_f2h_warm_reset_req_reset_n      (~hps_warm_reset),
@@ -311,9 +310,9 @@ soc_system u0 (
                .hps_0_i2c2_sda        (hdmi_internal_sda_o),
                .hps_0_i2c2_clk_clk    (hdmi_internal_scl_o_e),
                .hps_0_i2c2_scl_in_clk (hdmi_internal_scl_o),
-					
-					// HDMI AUDIO
-					.clk_audio_clk  (AUD_CTRL_CLK),
+
+               // HDMI AUDIO
+               .clk_audio_clk  (AUD_CTRL_CLK),
 
                //GPIO
                .hps_0_hps_io_hps_io_gpio_inst_GPIO09  ( HPS_CONV_USB_N ),  //                               .hps_io_gpio_inst_GPIO09

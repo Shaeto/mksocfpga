@@ -13,7 +13,7 @@
 	compatible = "altr,socfpga-cyclone5", "altr,socfpga";
 
 	chosen {
-		bootargs = "console=ttyS0,115200 earlyprintk uio_pdrv_genirq.of_id=generic-uio";
+		bootargs = "console=ttyS0,115200n8 earlyprintk=serial,ttyS0,115200n8 uio_pdrv_genirq.of_id=generic-uio";
 		stdout-path = "display0";
 	};
 
@@ -28,8 +28,17 @@
 		device_type = "memory";
 		reg = <0x0 0x40000000>; /* 1GB */
 	};
-	
+
+        regulator_3_3v: 3-3-v-regulator {
+                compatible = "regulator-fixed";
+                regulator-name = "3.3V";
+                regulator-min-microvolt = <3300000>;
+                regulator-max-microvolt = <3300000>;
+        };
+
 	soc {
+		u-boot,dm-pre-reloc;
+
 		clkmgr@ffd04000 {
 			clocks {
 				osc1 {
@@ -46,25 +55,37 @@
 		};
 		
 		hps_0_bridges: bridge@c0000000 {
-		    compatible = "altr,bridge-17.1", "simple-bus";
+		    compatible = "altr,bridge-18.1", "simple-bus";
 		    reg = <0xc0000000 0x20000000>, <0xff200000 0x00200000>;
 		    reg-names = "axi_h2f", "axi_h2f_lw";
 		    #address-cells = <2>;
 		    #size-cells = <1>;
 		
-		    ranges =	<0x00000001 0x00000140 0xff200140 0x00000010>,
-				<0x00000001 0x00000130 0xff200130 0x00000010>,
-				<0x00000001 0x00000120 0xff200120 0x00000010>,
-				<0x00000001 0x00000110 0xff200110 0x00000010>,
-				<0x00000001 0x00000100 0xff200100 0x00000010>,
-				<0x00000001 0x00000150 0xff200150 0x00000008>,
-				<0x00000001 0x00000158 0xff200158 0x00000008>,
+		    ranges =	<0x00000001 0x00000060 0xff200060 0x00000008>,
+				<0x00000001 0x00000040 0xff200040 0x00000010>,
+				<0x00000001 0x00000030 0xff200030 0x00000010>,
+				<0x00000001 0x00000020 0xff200020 0x00000010>,
+				<0x00000001 0x00000010 0xff200010 0x00000010>,
+				<0x00000001 0x00000000 0xff200000 0x00000010>,
+				<0x00000001 0x00000050 0xff200050 0x00000008>,
+				<0x00000001 0x00000058 0xff200058 0x00000008>,
+				<0x00000001 0x00010000 0xff210000 0x00010000>,
 				<0x00000001 0x00008000 0xff208000 0x00000040>,
-				<0x00000001 0x00010000 0xff210000 0x00010000>;
+				<0x00000001 0x0000b000 0xff20b000 0x00000020>,
+				<0x00000001 0x0000c000 0xff20c000 0x00000020>,
+				<0x00000001 0x0000d000 0xff20d000 0x00000020>;
 
-		    fpga_leds: gpio@100000140 {
-			compatible = "altr,pio-17.1", "altr,pio-1.0";
-			reg = <0x00000001 0x00000140 0x00000010>;
+		    jtag_uart: serial@100000060 {
+			compatible = "altr,juart-18.1", "altr,juart-1.0";
+			reg = <0x00000001 0x00000060 0x00000008>;
+			interrupt-parent = <&intc>;
+			interrupts = <0 41 4>;
+			clocks = <&osc1>;
+		    };
+
+		    fpga_leds: gpio@100000040 {
+			compatible = "altr,pio-18.1", "altr,pio-1.0";
+			reg = <0x00000001 0x00000040 0x00000010>;
 			clocks = <&osc1>;
 			altr,gpio-bank-width = <7>;
 			resetvalue = <0>;
@@ -72,9 +93,9 @@
 			gpio-controller;
 		    };
 
-		    dipsw_pio: gpio@100000130 {
-			compatible = "altr,pio-17.1", "altr,pio-1.0";
-			reg = <0x00000001 0x00000130 0x00000010>;
+		    dipsw_pio: gpio@100000030 {
+			compatible = "altr,pio-18.1", "altr,pio-1.0";
+			reg = <0x00000001 0x00000030 0x00000010>;
 			interrupt-parent = <&intc>;
 			interrupts = <0 42 1>;
 			clocks = <&osc1>;
@@ -87,9 +108,9 @@
 			gpio-controller;
 		    };
 
-		    button_pio: gpio@100000120 {
-			compatible = "altr,pio-17.1", "altr,pio-1.0";
-			reg = <0x00000001 0x00000120 0x00000010>;
+		    button_pio: gpio@100000020 {
+			compatible = "altr,pio-18.1", "altr,pio-1.0";
+			reg = <0x00000001 0x00000020 0x00000010>;
 			interrupt-parent = <&intc>;
 			interrupts = <0 43 1>;
 			clocks = <&osc1>;
@@ -102,9 +123,9 @@
 			gpio-controller;
 		    };
 
-		    psu_button: power_button@100000110 {
-			compatible = "altr,pio-17.1", "altr,pio-1.0";
-			reg = <0x00000001 0x00000110 0x00000010>;
+		    psu_button: power_button@100000010 {
+			compatible = "altr,pio-18.1", "altr,pio-1.0";
+			reg = <0x00000001 0x00000010 0x00000010>;
 			interrupt-parent = <&intc>;
 			interrupts = <0 46 4>;
 			clocks = <&osc1>;
@@ -118,9 +139,9 @@
 			reg-names = "pressed";
 		    };
 
-		    psu_poweroff_req: power_down@100000100 {
-			compatible = "altr,pio-17.1", "altr,pio-1.0";
-			reg = <0x00000001 0x00000100 0x00000010>;
+		    psu_poweroff_req: power_down@100000000 {
+			compatible = "altr,pio-18.1", "altr,pio-1.0";
+			reg = <0x00000001 0x00000000 0x00000010>;
 			clocks = <&osc1>;
 			altr,gpio-bank-width = <1>;
 			altr,ngpio = <1>;
@@ -130,9 +151,39 @@
 			reg-names = "signal";
 		    };
 
-		    sysid_qsys: sysid@100000158 {
-			compatible = "altr,sysid-17.1", "altr,sysid-1.0";
-			reg = <0x00000001 0x00000158 0x00000008>;
+		    locked_pio: gpio@10000d000 {
+			compatible = "altr,pio-18.1", "altr,pio-1.0";
+			reg = <0x00000001 0x0000d000 0x00000020>;
+			clocks = <&osc1>;
+			altr,gpio-bank-width = <1>;
+			resetvalue = <0>;
+			#gpio-cells = <2>;
+			gpio-controller;
+		    };
+
+		    cvo_reset_pio: gpio@10000c000 {
+			compatible = "altr,pio-18.1", "altr,pio-1.0";
+			reg = <0x00000001 0x0000c000 0x00000020>;
+			clocks = <&osc1>;
+			altr,gpio-bank-width = <1>;
+			resetvalue = <0>;
+			#gpio-cells = <2>;
+			gpio-controller;
+		    };
+
+		    pll_reset_pio: gpio@10000b000 {
+			compatible = "altr,pio-18.1", "altr,pio-1.0";
+			reg = <0x00000001 0x0000b000 0x00000020>;
+			clocks = <&osc1>;
+			altr,gpio-bank-width = <1>;
+			resetvalue = <0>;
+			#gpio-cells = <2>;
+			gpio-controller;
+		    };
+
+		    sysid_qsys: sysid@100000058 {
+			compatible = "altr,sysid-18.1", "altr,sysid-1.0";
+			reg = <0x00000001 0x00000058 0x00000008>;
 			id = <2899645442>;
 			timestamp = <1515961589>;
 		    };
@@ -147,21 +198,21 @@
 			data_width = <32>;
 		    };
 
-		    adc_ltc2308_fifo_0: adc-ltc2308@100000150 {
+		    adc_ltc2308_fifo_0: adc-ltc2308@100000050 {
 			compatible = "holotc,adc-io-1.1";
-			reg = <0x00000001 0x00000150 0x00000008>;
+			reg = <0x00000001 0x00000050 0x00000008>;
 			address_width = <3>;
 			data_width = <16>;
 		    };
 
 		    framebuffer: framebuffer@100008000 {
-			compatible = "altr,vip-17.1", "altr,vip-frame-buffer-2.0";
+			compatible = "altr,vip-18.1", "altr,vip-frame-buffer-2.0";
 			reg = <0x00000001 0x00008000 0x00000040>;
 			interrupt-parent = <&intc>;
 			interrupts = <0 40 4>;
 			altr,bits-per-symbol = <8>;
-			altr,max-height = <768>;
 			altr,max-width = <1024>;
+			altr,max-height = <768>;
 			altr,mem-port-width = <256>;
 		    };
 		};
@@ -205,6 +256,7 @@
 };
 
 &usb1 {
+	dr_mode = "host";
 	status = "okay";
 };
 
